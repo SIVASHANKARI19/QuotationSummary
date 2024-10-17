@@ -57,7 +57,7 @@ const amenitiesData = [
   // Add more amenities as needed
 ];
 
-const Amenities = () => {
+const Utilities = () => {
   const [amenities, setAmenities] = useState(amenitiesData);
 
   const handleToggleChange = (id, newChecked) => {
@@ -84,7 +84,7 @@ const Amenities = () => {
         
         }}
       >
-        <Typography variant="h6" padding={1}  marginTop={2} fontSize={18} color='gray'>Amenities</Typography>
+        <Typography variant="h6" padding={1}  marginTop={2} fontSize={18} color='gray'>Utilities</Typography>
       </Box>
      
       <Box
@@ -195,4 +195,4 @@ const Amenities = () => {
   );
 };
 
-export default Amenities;
+export default Utilities;

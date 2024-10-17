@@ -11,7 +11,9 @@ import BedIcon from '@mui/icons-material/Bed';
 import HomeIcon from '@mui/icons-material/Home';
 import AddIcon from '@mui/icons-material/Add';
 import Dropdown from '../Dropdown/Dropdown';
+import Amenities from '../Amenities/Amenities';
 import PricingComponent from '../PricingComponent/PricingComponent';
+import Utilities from '../Utilities/Utilities';
 
 const unitsData = [
   {
@@ -68,6 +70,9 @@ const UnitDetails = () => {
     setAnchorEl(event.currentTarget);
   };
   const handleCloseDialog = () => {
+    if(selectedOption === "Add Amenities"){
+      console.log("hello");
+    }
     setDialogOpen(false);
     setSelectedOption(null); // Reset selected option when dialog closes
 };
@@ -78,7 +83,7 @@ const UnitDetails = () => {
     console.log('Option selected in UnitDetails:', option);
     
     // Open the dialog if the selected option is "Add Pricing Component"
-    if (option === "Add Pricing Component") {
+    if (option === "Add Pricing Component" || option === "Add Amenities" || option ==="Add Utilities" || option === "Add Discount") {
         setDialogOpen(true);
     }
 };
@@ -151,10 +156,21 @@ const UnitDetails = () => {
       </Dialog>
       )}
         {selectedOption==="Add Amenities" && (
+        
         <Dialog open={dialogOpen} onClose={handleCloseDialog}>
        
         <DialogContent>
            <Amenities />
+        </DialogContent>
+      
+      </Dialog>
+      )}
+      {selectedOption==="Add Utilities" && (
+        
+        <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+       
+        <DialogContent>
+           <Utilities />
         </DialogContent>
       
       </Dialog>

@@ -7,7 +7,7 @@ const routes = [
 {
   path:"/",
   element: (
-    <Amenities />
+    <Ownership />
   )
 },
 {
