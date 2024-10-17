@@ -1,0 +1,58 @@
+.PopUp_parent {
+    position: fixed;
+    width: 100%;
+    /* width: 100vw;
+    height: 100vh; */
+    /* border: 2px solid rgb(255, 0, 0); */
+    height: 100%;
+    left: 0;
+    top: 0;
+    color: black;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PopUp_background {
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.Popupbutton {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    margin-right: 10px;
+}
+
+.Popupbutton button {
+    width: 100px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0px 10px;
+    border-radius: 10px;
+
+}
+
+.Popupbutton #cancel {
+    color: red;
+}
+
+.Popupbutton #save {
+    color: #377CFA;
+    border: 2px solid #377CFA;
+}
+
+.Popupbutton #save:hover {
+    background-color: #377CFA;
+    color: white;
+}
