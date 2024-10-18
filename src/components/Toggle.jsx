@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Switch, { switchClasses } from '@mui/joy/Switch';
 
-export default function ExampleStrapiSwitch({ initialChecked, onToggle }) {
+export default function ExampleStrapiSwitch({ initialChecked, id, onToggle }) {
   const [isChecked, setIsChecked] = React.useState(initialChecked);
 
   const handleChange = (event) => {
     const newChecked = event.target.checked;
     setIsChecked(newChecked);
     if (onToggle) {
-      onToggle(newChecked); // Call the parent callback if provided
+      onToggle(id, newChecked); // Pass the id and new checked state to the parent
     }
   };
 

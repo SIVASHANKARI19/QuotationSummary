@@ -24,27 +24,27 @@ const QuotationDetails = () => {
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
           <Typography
-            sx={{ fontSize: "10px", color: "#D8D8D8", marginBottom: "5px" }}
+            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" }}
           >
-            LEASE START DATE
+            LEASE END DATE
           </Typography>
           <Typography sx={{ fontSize: "10px" }}>30 Jan 22</Typography>
         </Box>{" "}
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
           <Typography
-            sx={{ fontSize: "10px", color: "#D8D8D8", marginBottom: "5px" }}
+            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" }}
           >
-            LEASE START DATE
+            RENT START DATE
           </Typography>
           <Typography sx={{ fontSize: "10px" }}>30 Jan 22</Typography>
         </Box>{" "}
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
           <Typography
-            sx={{ fontSize: "10px", color: "#D8D8D8", marginBottom: "5px" }}
+            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" }}
           >
-            LEASE START DATE
+            GRACE PERIOD
           </Typography>
-          <Typography sx={{ fontSize: "10px" }}>30 Jan 22</Typography>
+          <Typography sx={{ fontSize: "10px" }}>90 Days <span style={{color:"gray"}}>(Beginning) </span></Typography>
         </Box>
       </Box>
     </div>

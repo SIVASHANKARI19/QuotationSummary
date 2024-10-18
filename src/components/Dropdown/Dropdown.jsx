@@ -18,12 +18,24 @@ const Dropdown = ({ options, anchorEl, setShowDropDown, onOptionSelect }) => {
       onClose={handleClose}
       MenuListProps={{
         'aria-labelledby': 'customized-button',
-        
       }}
-     
+      // Align the dropdown to the right of the anchor
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'left',
+      }}
+
     >
       {options.map((option, index) => (
-        <MenuItem key={index} onClick={() => handleOptionClick(option)} sx={{borderBottom:"1px solid gray",fontSize:"10px"}}>
+        <MenuItem
+          key={index}
+          onClick={() => handleOptionClick(option)}
+          sx={{ borderBottom: "1px solid gray", fontSize: "10px" }}
+        >
           {option}
         </MenuItem>
       ))}

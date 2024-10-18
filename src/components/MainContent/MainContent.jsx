@@ -40,7 +40,7 @@ const MainContent = () => {
   return (
     <Box  sx={{  }}>
       <div style={{backgroundColor:"white",borderTopLeftRadius:"5px" ,borderTopRightRadius:"5px",padding:"10px"}}>   <Breadcrumbs
-        separator={<NavigateNextIcon fontSize="small" />}
+        separator={<NavigateNextIcon fontSize="small" sx={{color:"rgb(80,120,225)"}} />}
         aria-label="breadcrumb"
       >
         {breadcrumbs}
@@ -49,7 +49,7 @@ const MainContent = () => {
         display: 'flex',paddingTop:"0",height:"71vh",width:"92vw" }}>
       <Grid2 size={4} padding={2} sx={{flexGrow: 1,            // Allow this box to take remaining space
         display: 'flex', backgroundColor:"white",flexDirection:"column"}}>
-        
+           <Typography padding={1} sx={{color:"GRAY",fontSize:"14px",position:"relative",top:"-16px"}}>Unit Details  </Typography>
       <LeadDetails />
       <QuotationDetails />
       </Grid2>

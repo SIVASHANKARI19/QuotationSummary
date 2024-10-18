@@ -160,7 +160,7 @@ const UnitDetails = () => {
         <Dialog open={dialogOpen} onClose={handleCloseDialog}>
        
         <DialogContent>
-           <Amenities />
+           <Amenities close ={handleCloseDialog}/>
         </DialogContent>
       
       </Dialog>
@@ -170,7 +170,7 @@ const UnitDetails = () => {
         <Dialog open={dialogOpen} onClose={handleCloseDialog}>
        
         <DialogContent>
-           <Utilities />
+           <Utilities close={handleCloseDialog} />
         </DialogContent>
       
       </Dialog>

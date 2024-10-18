@@ -13,7 +13,7 @@ const PricingComponent = () => {
   const PricingTable = [
     { id: "01", bgColor: "#FEEAEA80", title: "Primary", arrowColor: "rgb(179,119,109)", component: Primary },
     { id: "02", bgColor: "#EDE4FE80", title: "Secondary", arrowColor: "rgb(140,113,181)", component: Primary },
-    { id: "03", bgColor: "#DBF0F180", title: "One Time Changes", arrowColor: "rgb(126,184,187)", component: Primary},
+    { id: "03", bgColor: "#DBF0F180", title: "One Time Charges", arrowColor: "rgb(126,184,187)", component: Primary},
     { id: "04", bgColor: "#E4EDFF80", title: "Refundables", arrowColor: "rgb(109,128,179)", component: Primary },
     { id: "05", bgColor: "#FFFAD880", title: "Inventory Item", arrowColor: "rgb(179,161,109)", component: Primary },
     { id: "06", bgColor: "#FEEAEA80", title: "Parking Slot", arrowColor: "rgb(179,119,109)", component: Primary },
@@ -46,7 +46,7 @@ const PricingComponent = () => {
   };
 
   return (
-    <Box sx={{ width: "30vw",height:"65vh"}}>
+    <Box sx={{ width: "27vw"}}>
       <Typography sx={{ fontSize: "16px", margin: "10px" }}>Pricing Table</Typography>
 
       {PricingTable.map((item) => (
@@ -56,7 +56,7 @@ const PricingComponent = () => {
             backgroundColor: item.bgColor,
             margin: "10px",
            
-
+            cursor: "pointer",
             padding: "10px",
             borderRadius: "5px",
             display: "flex",
@@ -108,7 +108,7 @@ const PricingComponent = () => {
       ))}
 
       {/* Dialog Component */}
-      <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+      <Dialog open={dialogOpen} onClose={handleCloseDialog} width="30vw" height="20vh">
         <DialogTitle sx={{display:"flex",justifyContent:"space-between"}}><Typography>{currentItem?.title}</Typography>
         <IconButton onClick={handleCloseDialog} sx={{position:"absolute",right:"10px"}}><CloseIcon/></IconButton>
         </DialogTitle>

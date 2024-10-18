@@ -5,9 +5,7 @@ import LeadProfile from '../../assets/image.png'; // Correct the path to the ima
 function LeadDetails() {
   return (
     <Box>
-      <Typography variant="body2" color="text.secondary" padding={2} sx={{color:"GRAY",fontSize:"14px"}}>
-        Lead Details
-      </Typography>
+      
     
       {/* Flex container for image and text */}
       <Box 
