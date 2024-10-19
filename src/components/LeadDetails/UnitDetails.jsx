@@ -20,7 +20,8 @@ const unitsData = [
     id: 1,
     name: 'Jumeirah Estate',
     price: '$900.00',
-    description: 'Jumeirah Golf Estate • 2000 sq.Ft',
+    description: 'Golf Estate',
+    sqrFt: 2000,
     img: interior, // You can replace this with different images if needed
     hotelCount: 3,
     bedCount: 3,
@@ -30,7 +31,8 @@ const unitsData = [
     id: 2,
     name: 'Burj Khalifa',
     price: '$1,200.00',
-    description: 'Downtown Dubai • 1500 sq.Ft',
+    description: 'Downtown Dubai',
+    sqrFt: 2500,
     img: interior,
     hotelCount: 2,
     bedCount: 2,
@@ -40,7 +42,8 @@ const unitsData = [
     id: 3,
     name: 'Palm Jumeirah',
     price: '$1,800.00',
-    description: 'Palm Island • 2500 sq.Ft',
+    description: 'Palm Island',
+    sqrFt: 2500,
     img: interior,
     hotelCount: 4,
     bedCount: 3,
@@ -50,7 +53,8 @@ const unitsData = [
     id: 4,
     name: 'Dubai Marina',
     price: '$1,500.00',
-    description: 'Dubai Marina • 1800 sq.Ft',
+    description: 'Dubai Marina',
+    sqrFt: 2500,
     img: interior,
     hotelCount: 3,
     bedCount: 3,
@@ -60,7 +64,8 @@ const unitsData = [
     id: 5,
     name: 'Dubai Marina',
     price: '$1,500.00',
-    description: 'Dubai Marina • 1800 sq.Ft',
+    description: 'Dubai Marina',
+    sqrFt: 2500,
     img: interior,
     hotelCount: 3,
     bedCount: 3,
@@ -102,22 +107,23 @@ const UnitDetails = () => {
   return (
     <Box  sx ={{display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)', // Exactly 2 columns
-    gap: '20px', // Spacing between the grid items
+    gap: '10px', // Spacing between the grid items
     padding: '10px', // Some padding around the grid for better layout
     overflowY: 'auto', 
     scrollbarWidth: 'none', // Enable scrolling if the content exceeds height
     maxHeight: '65vh',}}>
       {unitsData.map((unit) => (
-        <Card key={unit.id} sx={{ width: "90%", margin: 1, display: 'flex', flexDirection: 'column', height: "fit-content" }}>
+        <Card key={unit.id} sx={{ width: "100%", margin: 1, display: 'flex', flexDirection: 'column', height: "90%" }}>
           <Box sx={{ padding: 1, paddingBottom: 0 }}>
             <CardMedia
-              sx={{ height: 100, width: 175, borderRadius: 1 ,alignSelf: 'center',justifyContent: 'center'}}
+              sx={{ height: 100, borderRadius: 1 ,alignSelf: 'center',justifyContent: 'center'}}
               image={unit.img}
               title={unit.name}
             />
           </Box>
           <CardContent sx={{ paddingBottom: 0, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              
               <Typography fontSize={12} fontWeight={600}>
                 {unit.name}
               </Typography>
@@ -125,9 +131,16 @@ const UnitDetails = () => {
                 {unit.price}
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: '0.4rem',wordSpacing: 1,width: '100%'}}>
-              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 11 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', padding: '0.4rem',justifyContent: 'space-around',alignItems: 'center'}}>
+              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 13 }}>
                 {unit.description}
+
+              </Typography>
+              <Typography color='text.secondary'>
+              • 
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 13 }}>
+                {unit.sqrFt} sqft
               </Typography>
             </Box>
             <Box>
@@ -143,7 +156,7 @@ const UnitDetails = () => {
           <CardActions sx={{ justifyContent: 'center', alignItems: 'center' }}>
             <Button onClick={handleDropdownToggle}
               size="small"
-              sx={{ display: 'flex', alignItems: 'flex-start', fontSize: 12 }}
+              sx={{ display: 'flex', alignItems: 'flex-start', fontSize: 12,padding: 1,}}
             >
               <AddIcon fontSize='small' />
               CUSTAMIZE

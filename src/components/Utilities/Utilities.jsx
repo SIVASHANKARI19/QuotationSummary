@@ -55,7 +55,7 @@ const Utilities = ({close}) => {
 
         </Box>
 
-        <Typography color='rgb(147,196,199)'><span style={{ fontWeight: 'bold',color:"rgb(179,119,109)" }}>03</span> Total Utilities</Typography>
+        <Typography color='rgb(147,196,199)'><span style={{ fontWeight: 'bold',color:"rgb(147,196,199)" }}>03</span> Total Utilities</Typography>
 <Box  ><Typography paddingLeft={"150px"} color='rgb(147,196,199)' fontWeight={"bold"}>$200.00</Typography></Box>
         </Box>
         

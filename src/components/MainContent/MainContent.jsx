@@ -49,7 +49,7 @@ const MainContent = () => {
         display: 'flex',paddingTop:"0",height:"71vh",width:"92vw" }}>
       <Grid2 size={4} padding={2} sx={{flexGrow: 1,            // Allow this box to take remaining space
         display: 'flex', backgroundColor:"white",flexDirection:"column"}}>
-           <Typography padding={1} sx={{color:"GRAY",fontSize:"14px",position:"relative",top:"-16px"}}>Unit Details  </Typography>
+           <Typography padding={1} sx={{color:"GRAY",fontSize:"14px",position:"relative",top:"-16px"}}>Lead Details  </Typography>
       <LeadDetails />
       <QuotationDetails />
       </Grid2>

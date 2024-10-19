@@ -4,7 +4,7 @@ import React from "react";
 const QuotationDetails = () => {
   return (
     <div style={{ padding: "20px" }}>
-      <Typography>Quotation Details</Typography>
+      <Typography sx={{fontFamily:"poppins"}}>Quotation Details</Typography>
       <Box
         sx={{
           display: "grid",
@@ -21,31 +21,31 @@ const QuotationDetails = () => {
           >
             LEASE START DATE
           </Typography>
-          <Typography sx={{ fontSize: "10px" }}>30 Jan 22</Typography>
+          <Typography sx={{ fontSize: "10px",fontFamily:"poppins" }}>30 Jan 22</Typography>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
           <Typography
-            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" }}
+            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px",fontFamily:"poppins" }}
           >
             LEASE END DATE
           </Typography>
-          <Typography sx={{ fontSize: "10px" }}>30 Jan 22</Typography>
+          <Typography sx={{ fontSize: "10px" ,fontFamily:"poppins"}}>30 Jan 22</Typography>
         </Box>{" "}
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
           <Typography
-            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" }}
+            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" ,fontFamily:"poppins"}}
           >
             RENT START DATE
           </Typography>
-          <Typography sx={{ fontSize: "10px" }}>30 Jan 22</Typography>
+          <Typography sx={{ fontSize: "10px" ,fontFamily:"poppins"}}>30 Jan 22</Typography>
         </Box>{" "}
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
           <Typography
-            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" }}
+            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px",fontFamily:"poppins" }}
           >
             GRACE PERIOD
           </Typography>
-          <Typography sx={{ fontSize: "10px" }}>90 Days <span style={{color:"gray"}}>(Beginning) </span></Typography>
+          <Typography sx={{ fontSize: "10px" ,fontFamily:"poppins"}}>90 Days <span style={{color:"gray"}}>(Beginning) </span></Typography>
         </Box>
       </Box>
     </div>

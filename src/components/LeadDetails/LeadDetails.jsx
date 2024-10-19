@@ -43,7 +43,7 @@ function LeadDetails() {
         {/* Text next to the image */}
         <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography sx={{ marginRight: 2, fontSize: { xs: '12px', md: '14px' },fontWeight: 'bold' }}>
+            <Typography sx={{ marginRight: 2, fontSize: { xs: '12px', md: '14px' },fontWeight: 'bold',fontFamily:"poppins" }}>
               Tom Cruise
             </Typography>
             <Button
@@ -70,11 +70,11 @@ function LeadDetails() {
               paddingTop: 1,
             }}
           >
-            <Typography sx={{ fontSize: { xs: '14px', md: '14px' }, marginRight: 2,paddingTop:0.4 }}>
+            <Typography sx={{ fontSize: { xs: '12px', md: '12px' }, marginRight: 2,paddingTop:0.4,fontFamily:"poppins" }}>
               • +91 999999999
             </Typography>
-            <Typography sx={{ fontSize: { xs: '14px', md: '14px' },paddingTop:0.4 }}>
-              • tomCruise@gmail.com
+            <Typography sx={{ fontSize: { xs: '12px', md: '12px' },paddingTop:0.4,fontFamily:"poppins" }}>
+              • tomcruise@gmail.com
             </Typography>
           </Box>
         </Box>
