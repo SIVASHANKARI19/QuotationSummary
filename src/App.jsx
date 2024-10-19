@@ -11,16 +11,25 @@ import MainContent from './components/MainContent/MainContent';
 import Dropdown from './components/Dropdown/Dropdown';
 import PricingComponent from './components/PricingComponent/PricingComponent';
 import Amenities from './components/Amenities/Amenities';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+// Create a theme instance with Poppins font
+const theme = createTheme({
+  typography: {
+    fontFamily: '"Poppins"'
+  },
+});
+
+// Wrap your application with ThemeProvider
 function App() {
-
-
   return (
-     <Ownership />
-    // <PricingComponent />
-   
-
+    <ThemeProvider theme={theme}>
+      <Ownership />
+    </ThemeProvider>
   );
 }
 
 export default App;
+
+
+

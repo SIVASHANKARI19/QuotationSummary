@@ -56,6 +56,16 @@ const unitsData = [
     bedCount: 3,
     homeCount: 1,
   },
+  {
+    id: 5,
+    name: 'Dubai Marina',
+    price: '$1,500.00',
+    description: 'Dubai Marina • 1800 sq.Ft',
+    img: interior,
+    hotelCount: 3,
+    bedCount: 3,
+    homeCount: 1,
+  },
 ];
 const UnitDetails = () => {
   const [showDropDown, setShowDropDown] = useState(false);
@@ -90,12 +100,18 @@ const UnitDetails = () => {
 
 
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(210px, 1fr))', width: "100%", overflowY: "scroll",scrollbarWidth:"none", height: "65vh", gap: "10px", marginLeft: "3px" }}>
+    <Box  sx ={{display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)', // Exactly 2 columns
+    gap: '20px', // Spacing between the grid items
+    padding: '10px', // Some padding around the grid for better layout
+    overflowY: 'auto', 
+    scrollbarWidth: 'none', // Enable scrolling if the content exceeds height
+    maxHeight: '65vh',}}>
       {unitsData.map((unit) => (
         <Card key={unit.id} sx={{ width: "90%", margin: 1, display: 'flex', flexDirection: 'column', height: "fit-content" }}>
           <Box sx={{ padding: 1, paddingBottom: 0 }}>
             <CardMedia
-              sx={{ height: 100, width: 200, borderRadius: 1 }}
+              sx={{ height: 100, width: 175, borderRadius: 1 ,alignSelf: 'center',justifyContent: 'center'}}
               image={unit.img}
               title={unit.name}
             />
@@ -105,12 +121,12 @@ const UnitDetails = () => {
               <Typography fontSize={12} fontWeight={600}>
                 {unit.name}
               </Typography>
-              <Typography fontSize={12} fontWeight={600}>
+              <Typography fontSize={12} fontWeight={600} sx={{ color: "orange" }}>
                 {unit.price}
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center', padding: '0.4rem' }}>
-              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 10 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: '0.4rem',wordSpacing: 1,width: '100%'}}>
+              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 11 }}>
                 {unit.description}
               </Typography>
             </Box>

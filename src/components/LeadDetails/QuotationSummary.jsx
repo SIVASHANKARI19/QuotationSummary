@@ -20,24 +20,24 @@ const QuotationSummary = () => {
         bgcolor: "white",
         borderRadius: "5px",
         padding: "16px",
-        boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.1)",
         backgroundColor: "#f5f7fa",
-        fontFamily: "Nunito Sans",
+       
       }}
     >
       {/* Table for Main Content */}
       <Box sx={{ flexGrow: 1 }}>
         <TableContainer>
-          <Table size="small" aria-label="quotation details">
+          <Table size="small" aria-label="quotation details" padding="12px">
             <TableHead>
               <TableRow>
                 <TableCell
                   sx={{
                     fontSize: "10px",
                     color: "#6B7280",
-                    fontWeight: "600",
+                    fontWeight: "500",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                    
                   }}
                 >
                   DESCRIPTION
@@ -47,9 +47,9 @@ const QuotationSummary = () => {
                   sx={{
                     fontSize: "10px",
                     color: "#6B7280",
-                    fontWeight: "600",
+                    fontWeight: "500",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                 
                   }}
                 >
                   QTY
@@ -59,9 +59,9 @@ const QuotationSummary = () => {
                   sx={{
                     fontSize: "10px",
                     color: "#6B7280",
-                    fontWeight: "600",
+                    fontWeight: "500",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                   
                   }}
                 >
                   AMOUNT
@@ -70,15 +70,14 @@ const QuotationSummary = () => {
             </TableHead>
             <TableBody>
               {/* Total Amount Row */}
-              <TableRow>
+              <TableRow padding="12px">
                 <TableCell
                   sx={{
-                    fontSize: "14px",
-                    color: "#6B7280",
+                    fontSize: "12px",
+                    color: "rgb(120,130,143)",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
-                    fontWeight: "bold",
+              
                   }}
                 >
                   Total Amount
@@ -86,11 +85,12 @@ const QuotationSummary = () => {
                 <TableCell
                   align="left" // Left align
                   sx={{
-                    fontSize: "14px",
-                    color: "#6B7280",
+                    fontSize: "12px",
+                   color:"black",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                     fontWeight:"bold"
+                   
                   }}
                 >
                   3
@@ -98,12 +98,13 @@ const QuotationSummary = () => {
                 <TableCell
                   align="right"
                   sx={{
-                    fontWeight: "bold",
-                    fontSize: "14px",
-                    color: "#1F2937",
+                
+                    fontSize: "12px",
+                    color: "black",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                     fontWeight:"bold"
+                    
                   }}
                 >
                   $ 3,600.00
@@ -111,15 +112,15 @@ const QuotationSummary = () => {
               </TableRow>
 
               {/* Total Discount Row */}
-              <TableRow>
+              <TableRow padding="12px">
                 <TableCell
                   sx={{
-                    fontSize: "14px",
-                    color: "#6B7280",
+                    fontSize: "12px",
+                    color: "rgb(120,130,143)",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontWeight: "bold",
-                    fontFamily: "Nunito Sans",
+                
+                    
                   }}
                 >
                   Total Discount
@@ -127,11 +128,12 @@ const QuotationSummary = () => {
                 <TableCell
                   align="left" // Left align
                   sx={{
-                    fontSize: "14px",
-                    color: "#6B7280",
+                    fontSize: "12px",
+                    color: "black",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                     fontWeight:"bold"
+                    
                   }}
                 >
                   10%
@@ -139,10 +141,11 @@ const QuotationSummary = () => {
                 <TableCell
                   align="right"
                   sx={{
-                    fontSize: "14px",
+                    fontSize: "12px",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                
+                     fontWeight:"bold"
                   }}
                 >
                   - $ 100.00
@@ -150,8 +153,8 @@ const QuotationSummary = () => {
               </TableRow>
               {/* Divider below Total Discount */}
               <TableRow>
-                <TableCell colSpan={3} sx={{ padding: 0 }}>
-                  <Divider />
+                <TableCell colSpan={3} sx={{ padding: 0 ,height:"0.01px"}}>
+                  <Divider height="0.5px" />
                 </TableCell>
               </TableRow>
 
@@ -159,12 +162,13 @@ const QuotationSummary = () => {
               <TableRow>
                 <TableCell
                   sx={{
-                    fontSize: "14px",
-                    color: "#6B7280",
+                    fontSize: "12px",
+                    color: "rgb(120,130,143)",
                     borderBottom: "none",
-                    padding: "8px 0",
-                    fontFamily: "Nunito Sans",
-                    fontWeight: "bold",
+                    padding: "12px 0",
+
+                
+               
                   }}
                 >
                   Total Refundable
@@ -172,11 +176,12 @@ const QuotationSummary = () => {
                 <TableCell
                   align="left" // Left align
                   sx={{
-                    fontSize: "14px",
-                    color: "#6B7280",
+                    fontSize: "12px",
+                    color: "black",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                     fontWeight:"bold"
+         
                   }}
                 >
                   0%
@@ -184,13 +189,13 @@ const QuotationSummary = () => {
                 <TableCell
                   align="right"
                   sx={{
-                    fontWeight: "bold",
-                    fontSize: "14px",
+              
+                    fontSize: "12px",
                     color: "#1F2937",
                     borderBottom: "none",
-                    padding: "8px 0",
-                    fontFamily: "Nunito Sans",
-                    fontFamily: "Nunito Sans",
+                    padding: "12px 0",
+                     fontWeight:"bold"
+                 
                   }}
                 >
                   $ 0
@@ -202,8 +207,8 @@ const QuotationSummary = () => {
                   <Divider />
                 </TableCell> */}
 
-                <TableCell colSpan={3} sx={{ padding: "0" }}>
-                  <Divider />
+                <TableCell colSpan={3} sx={{ padding: "0" ,height:"0.01px"}}>
+                  <Divider  height="0.5px" />
                 </TableCell>
               </TableRow>
 
@@ -211,12 +216,12 @@ const QuotationSummary = () => {
               <TableRow>
                 <TableCell
                   sx={{
-                    fontSize: "14px",
-                    color: "#6B7280",
+                    fontSize: "12px",
+                    color: "rgb(120,130,143)",
                     borderBottom: "none",
-                    padding: "8px 0",
-                    fontWeight: "bold",
-                    fontFamily: "Nunito Sans",
+                    padding: "12px 0",
+                    
+                   
                   }}
                 >
                   Total Tax
@@ -224,11 +229,12 @@ const QuotationSummary = () => {
                 <TableCell
                   align="left" // Left align
                   sx={{
-                    fontSize: "14px",
-                    color: "#6B7280",
+                    fontSize: "12px",
+                    color: "black",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                    fontWeight:"bold"
+                   
                   }}
                 >
                   18%
@@ -236,12 +242,13 @@ const QuotationSummary = () => {
                 <TableCell
                   align="right"
                   sx={{
-                    fontWeight: "bold",
-                    fontSize: "14px",
+                    
+                    fontSize: "12px",
                     color: "#1F2937",
                     borderBottom: "none",
                     padding: "8px 0",
-                    fontFamily: "Nunito Sans",
+                     fontWeight:"bold"
+      
                   }}
                 >
                   $ 648.00
@@ -249,7 +256,7 @@ const QuotationSummary = () => {
               </TableRow>
               <TableRow>
                 <TableCell colSpan={3} sx={{ padding: 0 }}>
-                  <Divider />
+                  <Divider height={"0.5px"} />
                 </TableCell>
               </TableRow>
             </TableBody>

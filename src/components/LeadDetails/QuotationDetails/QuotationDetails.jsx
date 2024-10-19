@@ -12,11 +12,12 @@ const QuotationDetails = () => {
           margin: "10px",
           gap: "20px",
           marginTop: "20px",
+          fontFamily: "poppins",
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
           <Typography
-            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" }}
+            sx={{ fontSize: "10px", color: "gray", marginBottom: "5px" ,fontFamily:"poppins"}}
           >
             LEASE START DATE
           </Typography>
