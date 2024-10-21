@@ -14,12 +14,14 @@ const QuotationSummary = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        marginLeft: "1.5rem",
-        width: "420px",
-        height: "434px",
+   
+        width: "380px",
+        height: "57vh",
         bgcolor: "white",
-        borderRadius: "5px",
+        borderRadius: "2px",
         padding: "16px",
+        
+
         boxShadow: "0px 2px 2px rgba(0, 0, 0, 0.1)",
         backgroundColor: "#f5f7fa",
        

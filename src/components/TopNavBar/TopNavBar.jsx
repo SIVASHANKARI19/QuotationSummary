@@ -80,10 +80,12 @@ const TopNavBar = () => {
               color="inherit"
              sx={{marginTop:"5px",marginRight:"10px"}}
             >
-
-              <Badge badgeContent={2} color="primary">
-                <NotificationsIcon />
-              </Badge>
+ <Box >
+      <Badge color="primary" variant="dot">
+      <NotificationsIcon />
+      </Badge>
+    </Box>
+              
             </IconButton>
             <Divider orientation="vertical" variant="middle" flexItem sx={{ height: 26, bgcolor: 'gray' ,marginTop:"20px",marginRight:"10px"}} />
           <SuperAdmin />

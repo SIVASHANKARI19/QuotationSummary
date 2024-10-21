@@ -4,7 +4,7 @@ import LeadProfile from '../../assets/image.png'; // Correct the path to the ima
 
 function LeadDetails() {
   return (
-    <Box>
+    <Box maxHeight={'50vh'}>
       
     
       {/* Flex container for image and text */}
@@ -48,11 +48,14 @@ function LeadDetails() {
             </Typography>
             <Button
               sx={{
-                color: 'gray',
+                color: '#4E5A6B',
+          
+            
                 backgroundColor: 'rgb(234,239,251)',
                 padding: '2px 4px',
-                fontSize: { xs: '10px', md: '10px' }, // Responsive font size
-                minWidth: 'unset', // Prevents button from being too wide
+                fontSize: { xs: '10px', md: '8px' }, // Responsive font size
+                minWidth: 'unset',
+                fontWeight: 'bold', // Prevents button from being too wide
               }}
             >
               Prospect

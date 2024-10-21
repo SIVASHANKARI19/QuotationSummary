@@ -401,8 +401,8 @@ const Primary = ({ bgColor, color, title, onClose }) => {
         ) : null}
       </form>
       {title !== "Inventory Item" ? (
-        <Box sx={{ marginTop: "10px" }}>
-          <Typography sx={{ margin: "10px", fontSize: "12px", color: "gray" }}>
+        <Box sx={{ }}>
+          <Typography sx={{ margin: "10px",marginBottom:"0", fontSize: "12px", color: "gray" }}>
             UOM Value
           </Typography>
           <FormControl
@@ -411,14 +411,14 @@ const Primary = ({ bgColor, color, title, onClose }) => {
               backgroundColor: "white",
               borderRadius: "0.5rem",
               height: "40px",
-              padding: "2px",
+          
             }}
             variant="outlined"
           >
             <OutlinedInput
               id="outlined-adornment-weight"
               endAdornment={
-                <InputAdornment fontSize={0} position="end">
+                <InputAdornment fontSize={10} position="end">
                   {title === "Primary" ? "SAR/Total" : "$/Monthly"}
                 </InputAdornment>
               }

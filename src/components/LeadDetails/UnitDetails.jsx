@@ -5,7 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import interior from '../../assets/interior.jpg'; // Adjust the image path as necessary
+import house from '../../assets/house.jpg'; // Adjust the image path as necessary
 import HotelIcon from '@mui/icons-material/Hotel';
 import BedIcon from '@mui/icons-material/Bed';
 import HomeIcon from '@mui/icons-material/Home';
@@ -14,7 +14,12 @@ import Dropdown from '../Dropdown/Dropdown';
 import Amenities from '../Amenities/Amenities';
 import PricingComponent from '../PricingComponent/PricingComponent';
 import Utilities from '../Utilities/Utilities';
+import Discount2 from '../Discount/RemoveComponent';
+import { GoHome } from "react-icons/go";
+import { LuBath } from "react-icons/lu";
+import { FaBed } from "react-icons/fa";
 
+import { FaBath } from "react-icons/fa6";
 const unitsData = [
   {
     id: 1,
@@ -22,10 +27,10 @@ const unitsData = [
     price: '$900.00',
     description: 'Golf Estate',
     sqrFt: 2000,
-    img: interior, // You can replace this with different images if needed
+    img: house, // You can replace this with different images if needed
     hotelCount: 3,
     bedCount: 3,
-    homeCount: 1,
+    homeCount: '2BHK',
   },
   {
     id: 2,
@@ -33,10 +38,10 @@ const unitsData = [
     price: '$1,200.00',
     description: 'Downtown Dubai',
     sqrFt: 2500,
-    img: interior,
+    img: house,
     hotelCount: 2,
     bedCount: 2,
-    homeCount: 1,
+    homeCount: '2BHK',
   },
   {
     id: 3,
@@ -44,10 +49,10 @@ const unitsData = [
     price: '$1,800.00',
     description: 'Palm Island',
     sqrFt: 2500,
-    img: interior,
+    img: house,
     hotelCount: 4,
     bedCount: 3,
-    homeCount: 2,
+    homeCount: '2BHK',
   },
   {
     id: 4,
@@ -55,10 +60,10 @@ const unitsData = [
     price: '$1,500.00',
     description: 'Dubai Marina',
     sqrFt: 2500,
-    img: interior,
+    img: house,
     hotelCount: 3,
     bedCount: 3,
-    homeCount: 1,
+    homeCount: '2BHK',
   },
   {
     id: 5,
@@ -66,10 +71,10 @@ const unitsData = [
     price: '$1,500.00',
     description: 'Dubai Marina',
     sqrFt: 2500,
-    img: interior,
+    img: house,
     hotelCount: 3,
     bedCount: 3,
-    homeCount: 1,
+    homeCount: '2BHK',
   },
 ];
 const UnitDetails = () => {
@@ -111,55 +116,56 @@ const UnitDetails = () => {
     padding: '10px', // Some padding around the grid for better layout
     overflowY: 'auto', 
     scrollbarWidth: 'none', // Enable scrolling if the content exceeds height
-    maxHeight: '65vh',}}>
+    maxHeight: '58vh',
+  }}>
       {unitsData.map((unit) => (
-        <Card key={unit.id} sx={{ width: "100%", margin: 1, display: 'flex', flexDirection: 'column', height: "90%" }}>
+        <Card key={unit.id} sx={{ width: "92%", display: 'flex', flexDirection: 'column', height: "100%" }}>
           <Box sx={{ padding: 1, paddingBottom: 0 }}>
             <CardMedia
-              sx={{ height: 100, borderRadius: 1 ,alignSelf: 'center',justifyContent: 'center'}}
+              sx={{ height: 105, borderRadius: 1 ,alignSelf: 'center',justifyContent: 'center'}}
               image={unit.img}
               title={unit.name}
             />
           </Box>
-          <CardContent sx={{ paddingBottom: 0, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+          <CardContent sx={{ paddingBottom: 0, display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               
-              <Typography fontSize={12} fontWeight={600}>
+              <Typography fontSize={14} fontWeight={600}>
                 {unit.name}
               </Typography>
-              <Typography fontSize={12} fontWeight={600} sx={{ color: "orange" }}>
+              <Typography fontSize={14} fontWeight={600} >
                 {unit.price}
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center', padding: '0.4rem',justifyContent: 'space-around',alignItems: 'center'}}>
-              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 13 }}>
+            <Box sx={{ display: 'flex',flexDirection: 'row',alignItems: 'center', justifyContent: 'center',justifyContent: 'space-around',alignItems: 'center',paddingBottom: 1.5}}>
+              <Typography variant="body2" sx={{ color: 'rgb(194,199,205)', fontSize: 13 }}>
                 {unit.description}
 
               </Typography>
-              <Typography color='text.secondary'>
+              <Typography color='rgb(194,199,205)'>
               • 
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 13 }}>
+              <Typography variant="body2" sx={{ color: 'rgb(194,199,205)', fontSize: 13 }}>
                 {unit.sqrFt} sqft
               </Typography>
             </Box>
             <Box>
-              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 10, display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <HotelIcon fontSize="small" /> {unit.hotelCount}
+              <Typography variant="body2" sx={{ color: 'rgb(194,199,205)', fontSize: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+                <HotelIcon fontSize="small" sx={{ mr: 0.5 }} /> {unit.hotelCount}
+                <Typography sx={{ mr: 1 }}>•</Typography>
+                <LuBath  fontSize="medium" sx={{ mr: 0.5 }} /> {unit.bedCount}
                 <Typography sx={{ mx: 1 }}>•</Typography>
-                <BedIcon fontSize="small" /> {unit.bedCount}
-                <Typography sx={{ mx: 1 }}>•</Typography>
-                <HomeIcon fontSize="small" /> {unit.homeCount}
+                <GoHome  fontSize="medium" sx={{ mr: 0.1 }} /> {unit.homeCount}
               </Typography>
             </Box>
           </CardContent>
           <CardActions sx={{ justifyContent: 'center', alignItems: 'center' }}>
             <Button onClick={handleDropdownToggle}
               size="small"
-              sx={{ display: 'flex', alignItems: 'flex-start', fontSize: 12,padding: 1,}}
+              sx={{ display: 'flex', alignItems: 'center',textTransform: 'none', fontSize: 12,padding: 0,}}
             >
-              <AddIcon fontSize='small' />
-              CUSTAMIZE
+              <AddIcon sx={{fontSize: 12,mr: 1}} />
+              Custamize
             </Button>
           </CardActions>
         </Card>
@@ -203,6 +209,12 @@ const UnitDetails = () => {
         </DialogContent>
       
       </Dialog>
+      )}
+      {selectedOption==="Remove Component" && (
+        
+        <Dialog open={dialogOpen} onClose={handleCloseDialog}   maxWidth="1000px"  >
+           <Discount2 close={handleCloseDialog} />
+       </Dialog>
       )}
     </Box>
   );
