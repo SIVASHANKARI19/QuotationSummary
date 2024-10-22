@@ -90,10 +90,11 @@ const Amenities = ({ close }) => {
         variant="h6"
         padding={1}
         marginTop={2}
-        fontSize={18}
-        color="gray"
+        fontSize={14}
+        fontWeight={"bold"}
+        fontFamily={"Nunito Sans"}
       >
-        Amenities
+     Add   Amenities
       </Typography>
       <Box
         sx={{
@@ -223,7 +224,7 @@ const Amenities = ({ close }) => {
           sx={{
             color: "grey",
             "&.Mui-checked": {
-              color: "#6e86d0",
+              color: "#5078E1",
             },
           }}
           checked={amenity.additionalChecked} // Manage checked state
@@ -242,10 +243,10 @@ const Amenities = ({ close }) => {
         width: "25vw",
         borderTopLeftRadius: "0px",
         borderTopRightRadius: "0px",
-        fontSize: "0.5rem",
+        fontSize: "0.2rem",
         "& .MuiFormControlLabel-label": {
-          color: "lightgray",
-          fontSize: "0.9rem", // Set your preferred font size
+          color: "black",
+          fontSize: "0.6rem", // Set your preferred font size
         },
       }}
     />

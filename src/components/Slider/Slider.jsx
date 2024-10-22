@@ -13,20 +13,17 @@ const SliderComponent = ({ value, color }) => {
           position: "relative",
           top: "-7px",
           color: color,
-          padding: 0, 
-        
-
-       
+          padding: 0,
 
           "& .MuiSlider-root": {
-            padding: 0, 
+            padding: 0,
           },
           "& .MuiSlider-track": {
             color: color,
-            padding: 0, 
+            padding: 0,
           },
           "& .MuiSlider-thumb": {
-            display: "none", 
+            display: "none",
           },
         }}
       />

@@ -1,10 +1,18 @@
-import React from 'react';
-import { AppBar, Box, Toolbar, Typography,IconButton,Badge, Divider } from '@mui/material';
-import logo from '../../assets/logo.png';
-import styled from 'styled-components';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SearchIcon from '@mui/icons-material/Search';
-import SuperAdmin from '../SuperAdmin/SuperAdmin';
+import React from "react";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  IconButton,
+  Badge,
+  Divider,
+} from "@mui/material";
+import logo from "../../assets/logo.png";
+import styled from "styled-components";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
+import SuperAdmin from "../SuperAdmin/SuperAdmin";
 
 const SearchContainer = styled.div`
   position: relative;
@@ -13,7 +21,7 @@ const SearchContainer = styled.div`
   width: 300px;
   border-radius: 5px;
 
-  height:50px;
+  height: 50px;
 `;
 
 const StyledInput = styled.input`
@@ -22,7 +30,7 @@ const StyledInput = styled.input`
   width: 100%;
   outline: none;
   border-radius: 5px;
-  background-color: rgb(93,93,93);
+  background-color: rgb(93, 93, 93);
   color: white;
   font-size: 16px;
 
@@ -42,56 +50,86 @@ const StyledSearchIcon = styled(SearchIcon)`
 const TopNavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar 
-        position="static" 
-        sx={{ 
-          '& .MuiToolbar-root': { justifyContent: 'space-between',alignItems:"center" }, 
-          backgroundColor: '#1c1c1c' ,height:"3.5rem"
+      <AppBar
+        position="static"
+        sx={{
+          "& .MuiToolbar-root": {
+            justifyContent: "space-between",
+            alignItems: "center",
+          },
+          backgroundColor: "#1c1c1c",
+          height: "3.5rem",
         }}
       >
         <Toolbar>
           {/* Logo and Title */}
-          <Typography variant="h6" component="div" sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ display: "flex", alignItems: "center" }}
+          >
             <img
               src={logo}
               alt="Logo"
               style={{
-                width: '180px',
-                height: '20px',
-                borderRight: '1px solid #d8d8d8',
-                paddingRight: '15px',
+                width: "180px",
+                height: "20px",
+                borderRight: "1px solid #d8d8d8",
+                paddingRight: "15px",
               }}
             />
-            <span style={{ color: '#d8d8d8', paddingLeft: '15px', fontSize: '10px' }}>
+            <span
+              style={{
+                color: "#d8d8d8",
+                paddingLeft: "15px",
+                fontSize: "10px",
+              }}
+            >
               PROPERTY MANAGEMENT SOLUTION
             </span>
           </Typography>
 
           {/* Centered Search Bar */}
-          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: "center", height: "10px" }}>
-      <SearchContainer>
-        <StyledSearchIcon sx={{ color: "white" ,fontSize:"18px"}} />
-        <StyledInput placeholder="Search" />
-      </SearchContainer>
-    </Box>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "10px",
+            }}
+          >
+            <SearchContainer>
+              <StyledSearchIcon sx={{ color: "white", fontSize: "18px" }} />
+              <StyledInput placeholder="Search" />
+            </SearchContainer>
+          </Box>
           <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-             sx={{marginTop:"5px",marginRight:"5px"}}
-            >
- <Box  marginBottom={1} >
-      <Badge color="primary" variant="dot" >
-      <NotificationsIcon sx={{mr:"-6px",bottom:"-10px"}} />
-      </Badge>
-    </Box>
-              
-            </IconButton>
-            <Divider orientation="vertical" variant="middle" flexItem sx={{ height: 26, bgcolor: 'gray' ,marginTop:"20px",marginRight:"10px"}} />
+            size="large"
+            aria-label="show 17 new notifications"
+            color="inherit"
+            sx={{ marginTop: "5px", marginRight: "5px" }}
+          >
+            <Box marginBottom={1}>
+              <Badge color="primary" variant="dot">
+                <NotificationsIcon sx={{ mr: "-6px", bottom: "-10px" }} />
+              </Badge>
+            </Box>
+          </IconButton>
+          <Divider
+            orientation="vertical"
+            variant="middle"
+            flexItem
+            sx={{
+              height: 26,
+              bgcolor: "gray",
+              marginTop: "20px",
+              marginRight: "10px",
+            }}
+          />
           <SuperAdmin />
 
           {/* Profile Icon on the right */}
-         
         </Toolbar>
       </AppBar>
     </Box>

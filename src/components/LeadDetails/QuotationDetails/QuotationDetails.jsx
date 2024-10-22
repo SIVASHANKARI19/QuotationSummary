@@ -9,7 +9,7 @@ const QuotationDetails = ({
 }) => {
   return (
     <div style={{ padding: "20px" }}>
-      <Typography sx={{  fontWeight: "bold", fontSize: "12px", color: "#4E5A6B", ml: "5px" }}>
+      <Typography sx={{  fontWeight: "bold", fontSize: "12px", color: "#4E5A6B", ml: "8px",fontFamily: 'Nunito Sans' }}>
         Quotation Details
       </Typography>
       <Box
@@ -23,35 +23,35 @@ const QuotationDetails = ({
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
-          <Typography sx={{ fontSize: "10px", color: "gray", marginBottom: "5px",}}>
-            Lease Start Date
+          <Typography sx={{ fontSize: "8px", color: "gray", marginBottom: "5px",fontFamily: 'Nunito Sans'}}>
+            LEASE START DATE
           </Typography>
-          <Typography sx={{ fontSize: "10px",  fontWeight: "bold" }}>
+          <Typography sx={{ fontSize: "10px",  fontWeight: "bold",fontFamily: 'Nunito Sans' }}>
             {leaseStartDate}
           </Typography>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
-          <Typography sx={{ fontSize: "10px", color: "gray", marginBottom: "5px"}}>
-            Lease End Date
+          <Typography sx={{ fontSize: "8px", color: "gray", marginBottom: "5px",fontFamily: 'Nunito Sans'}}>
+            LEASE END DATE
           </Typography>
-          <Typography sx={{ fontSize: "10px",  fontWeight: "bold" }}>
+          <Typography sx={{ fontSize: "10px",  fontWeight: "bold"   ,fontFamily: 'Nunito Sans'}}>
             {leaseEndDate}
           </Typography>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
-          <Typography sx={{ fontSize: "10px", color: "gray", marginBottom: "5px", }}>
-            Rent Start Date
+          <Typography sx={{ fontSize: "8px", color: "gray", marginBottom: "5px",fontFamily: 'Nunito Sans' }}>
+            RENT START DATE
           </Typography>
           <Typography sx={{ fontSize: "10px",  fontWeight: "bold" }}>
             {rentStartDate}
           </Typography>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", fontSize: "8px" }}>
-          <Typography sx={{ fontSize: "10px", color: "gray", marginBottom: "5px",  }}>
-            Grace Period
+          <Typography sx={{ fontSize: "8px", color: "gray", marginBottom: "5px",fontFamily: 'Nunito Sans'  }}>
+            GRACE PERIOD
           </Typography>
-          <Typography sx={{ fontSize: "10px", fontWeight: "bold" }}>
-            {gracePeriod} <span style={{ color: "gray" }}>(Beginning)</span>
+          <Typography sx={{ fontSize: "10px", fontWeight: "bold" ,fontFamily: 'Nunito Sans'}}>
+            {gracePeriod} <span style={{ color: "gray",fontFamily: 'Nunito Sans',fontWeight: "500" }}>(Beginning)</span>
           </Typography>
         </Box>
       </Box>

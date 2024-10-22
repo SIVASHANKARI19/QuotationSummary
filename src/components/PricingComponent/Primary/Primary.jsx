@@ -6,8 +6,8 @@ import { FormControl } from "@mui/material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import SliderComponent from "../../Slider/Slider";
-import { useDispatch,useSelector } from "react-redux";
-import {setTotalAmt} from "../../../redux/PricingSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setTotalAmt } from "../../../redux/PricingSlice";
 import { Close } from "@mui/icons-material";
 
 const Primary = ({ bgColor, color, title, onClose }) => {
@@ -20,7 +20,6 @@ const Primary = ({ bgColor, color, title, onClose }) => {
     { value: 1, label: "Pricing Component" },
     { value: 2, label: "In Development" },
     { value: 3, label: "Deployed to Staging" },
-    
   ];
   const pricingComponentOptions = [
     { value: 1, label: "GST" },
@@ -29,33 +28,29 @@ const Primary = ({ bgColor, color, title, onClose }) => {
     { value: 4, label: "TDS" },
     { value: 5, label: "GST" },
   ];
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
-  const totalAmount = useSelector((state) => state.units.totalAmt); // Accessing the total amount from Redux state
+  const totalAmount = useSelector((state) => state.units.totalAmt); 
 
   const handleUOMValue = (event) => {
-      const value = parseFloat(event.target.value); // Get the input value as a float
-      setInputValue(value); // Update the local input value
-
-  }
-     // Only dispatch if value is a valid number
-    
-     const handlePriceChange = () => {
-      const value = parseFloat(inputValue); // Ensure the input value is a float
-  
-      // Only dispatch if the value is a valid number
-      if (!isNaN(value)) {
-          // Calculate new total by adding the new input value to the current total amount
-          const newTotal = value; // Only the new input value
-          dispatch(setTotalAmt(newTotal)); // Update the total amount in the Redux store
-      } else {
-          console.error("Invalid input: Not a number");
-      }
-      
-      console.log("Input Value:", value);
-      onClose(); // Close the modal or popup after handling the input
+    const value = parseFloat(event.target.value); 
+    setInputValue(value);
   };
-  
+
+
+  const handlePriceChange = () => {
+    const value = parseFloat(inputValue); 
+    if (!isNaN(value)) {
+      const newTotal = value; 
+      dispatch(setTotalAmt(newTotal)); 
+    } else {
+      console.error("Invalid input: Not a number");
+    }
+
+    console.log("Input Value:", value);
+    onClose(); 
+  };
+
   return (
     <Box sx={{ height: "60vh", width: "100%" }}>
       {/* Header */}
@@ -69,7 +64,14 @@ const Primary = ({ bgColor, color, title, onClose }) => {
           justifyContent: "space-between",
         }}
       >
-        <Typography sx={{ fontSize: "16px", margin: "10px", color: color }}>
+        <Typography
+          sx={{
+            fontSize: "16px",
+            margin: "10px",
+            color: color,
+            fontFamily: "Nunito Sans",
+          }}
+        >
           {title}
         </Typography>
         <Tooltip
@@ -117,7 +119,14 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 : "auto",
           }}
         >
-          <Typography sx={{ margin: "10px", fontSize: "12px", color: "gray" }}>
+          <Typography
+            sx={{
+              margin: "10px",
+              fontSize: "12px",
+              color: "gray",
+              fontFamily: "Nunito Sans",
+            }}
+          >
             Revenue Type
           </Typography>
           <Box sx={{ display: "flex" }}>
@@ -140,7 +149,8 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                       ? "none"
                       : "1px solid #d8d8d8",
                   fontSize: "10px",
-                  width: "auto", // Full width for buttons in Secondary
+                  width: "auto",
+                  fontFamily: "Nunito Sans", // Full width for buttons in Secondary
                 }}
                 onClick={() => setSelectedRevenueType(revenueType)}
               >
@@ -150,13 +160,27 @@ const Primary = ({ bgColor, color, title, onClose }) => {
           </Box>
         </Box>
         <Box>
-          <Typography sx={{ margin: "10px", fontSize: "12px", color: "gray" }}>
+          <Typography
+            sx={{
+              margin: "10px",
+              fontSize: "12px",
+              color: "gray",
+              fontFamily: "Nunito Sans",
+            }}
+          >
             Pricing Component
           </Typography>
           <Dropdown WorkOptions={WorkOptions} />
         </Box>
         <Box>
-          <Typography sx={{ margin: "10px", fontSize: "12px", color: "gray" }}>
+          <Typography
+            sx={{
+              margin: "10px",
+              fontSize: "12px",
+              color: "gray",
+              fontFamily: "Nunito Sans",
+            }}
+          >
             Tax Group For Pricing Component
           </Typography>
           <Dropdown WorkOptions={pricingComponentOptions} />
@@ -164,7 +188,12 @@ const Primary = ({ bgColor, color, title, onClose }) => {
         {title === "Inventory Item" ? (
           <Box>
             <Typography
-              sx={{ margin: "10px", fontSize: "12px", color: "gray" }}
+              sx={{
+                margin: "10px",
+                fontSize: "12px",
+                color: "gray",
+                fontFamily: "Nunito Sans",
+              }}
             >
               Pricing Based on
             </Typography>
@@ -180,6 +209,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 fontSize: "10px",
                 marginLeft: "12px",
                 marginRight: "7px",
+                fontFamily: "Nunito Sans",
               }}
               onClick={() => setPricingBasedOn("monthly")}
             >
@@ -196,6 +226,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                     ? "transparent"
                     : "1px solid #d8d8d8",
                 fontSize: "10px",
+                fontFamily: "Nunito Sans",
               }}
               onClick={() => setPricingBasedOn("total")}
             >
@@ -208,7 +239,12 @@ const Primary = ({ bgColor, color, title, onClose }) => {
         title === "Parking Slot" ? (
           <Box>
             <Typography
-              sx={{ margin: "10px", fontSize: "12px", color: "gray" }}
+              sx={{
+                margin: "10px",
+                fontSize: "12px",
+                color: "gray",
+                fontFamily: "Nunito Sans",
+              }}
             >
               Chargable
             </Typography>
@@ -222,6 +258,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 fontSize: "10px",
                 marginRight: "7px",
                 marginLeft: "12px",
+                fontFamily: "Nunito Sans",
               }}
               onClick={() => setChargable("yes")}
             >
@@ -235,6 +272,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 border:
                   chargable === "no" ? "transparent" : "1px solid #d8d8d8",
                 fontSize: "10px",
+                fontFamily: "Nunito Sans",
               }}
               onClick={() => setChargable("no")}
             >
@@ -245,7 +283,12 @@ const Primary = ({ bgColor, color, title, onClose }) => {
         {title === "Refundables" ? (
           <Box>
             <Typography
-              sx={{ margin: "10px", fontSize: "12px", color: "gray" }}
+              sx={{
+                margin: "10px",
+                fontSize: "12px",
+                color: "gray",
+                fontFamily: "Nunito Sans",
+              }}
             >
               Refundable
             </Typography>
@@ -261,6 +304,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 fontSize: "10px",
                 marginRight: "7px",
                 marginLeft: "12px",
+                fontFamily: "Nunito Sans",
               }}
               onClick={() => setComponentBasedOn("amount")}
             >
@@ -276,6 +320,8 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                     ? "transparent"
                     : "1px solid #d8d8d8",
                 fontSize: "10px",
+                marginRight: "7px",
+                fontFamily: "Nunito Sans",
               }}
               onClick={() => setComponentBasedOn("rental")}
             >
@@ -291,6 +337,8 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                     ? "transparent"
                     : "1px solid #d8d8d8",
                 fontSize: "10px",
+                width: "40px",
+                fontFamily: "Nunito Sans",
               }}
               onClick={() => setComponentBasedOn("%")}
             >
@@ -303,7 +351,12 @@ const Primary = ({ bgColor, color, title, onClose }) => {
         title === "Parking Slot" ? (
           <Box>
             <Typography
-              sx={{ margin: "10px", fontSize: "12px", color: "gray" }}
+              sx={{
+                margin: "10px",
+                fontSize: "12px",
+                color: "gray",
+                fontFamily: "Nunito Sans",
+              }}
             >
               Component Based On
             </Typography>
@@ -330,6 +383,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                           : "1px solid #d8d8d8",
                       fontSize: "10px",
                       cursor: "pointer",
+                      fontFamily: "Nunito Sans",
                     }}
                     onClick={() => setSelectedComponent(component)}
                   >
@@ -348,6 +402,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                   fontSize: "12px",
                   color: "gray",
                   marginLeft: "12px",
+                  fontFamily: "Nunito Sans",
                 }}
               >
                 Item Unit Price
@@ -363,7 +418,6 @@ const Primary = ({ bgColor, color, title, onClose }) => {
               >
                 <OutlinedInput
                   id="outlined-adornment-weight"
-                
                   endAdornment={
                     <InputAdornment position="end" fontSize={10}>
                       {title === "Primary" ? "SAR/Total" : "$/Monthly"}{" "}
@@ -392,6 +446,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                   fontSize: "12px",
                   color: "gray",
                   marginLeft: "12px",
+                  fontFamily: "Nunito Sans",
                 }}
               >
                 Quantity
@@ -428,8 +483,16 @@ const Primary = ({ bgColor, color, title, onClose }) => {
         ) : null}
       </form>
       {title !== "Inventory Item" ? (
-        <Box sx={{ }}>
-          <Typography sx={{ margin: "10px",marginBottom:"0", fontSize: "12px", color: "gray" }}>
+        <Box sx={{}}>
+          <Typography
+            sx={{
+              margin: "10px",
+              marginBottom: "0",
+              fontSize: "12px",
+              color: "gray",
+              fontFamily: "Nunito Sans",
+            }}
+          >
             UOM Value
           </Typography>
           <FormControl
@@ -438,15 +501,13 @@ const Primary = ({ bgColor, color, title, onClose }) => {
               backgroundColor: "white",
               borderRadius: "0.5rem",
               height: "40px",
-          
             }}
             variant="outlined"
           >
             <OutlinedInput
               id="outlined-adornment-weight"
-              value={inputValue || ''} // Ensure value is a string or empty for controlled input
+              value={inputValue || ""}
               onChange={(e) => handleUOMValue(e)}
-            
               endAdornment={
                 <InputAdornment fontSize={10} position="end">
                   {title === "Primary" ? "SAR/Total" : "$/Monthly"}
@@ -477,7 +538,12 @@ const Primary = ({ bgColor, color, title, onClose }) => {
         >
           <Box>
             <Typography
-              sx={{ marginTop: "10px", fontSize: "12px", color: "gray" }}
+              sx={{
+                marginTop: "10px",
+                fontSize: "12px",
+                color: "gray",
+                fontFamily: "Nunito Sans",
+              }}
             >
               Maximum
             </Typography>
@@ -493,7 +559,9 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 position: "relative",
               }}
             >
-              <Typography sx={{ fontSize: "12px" }}>$190</Typography>
+              <Typography sx={{ fontSize: "12px", fontFamily: "Nunito Sans" }}>
+                $190
+              </Typography>
             </Box>
             <Typography
               sx={{
@@ -502,6 +570,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 padding: "6px",
                 top: "-6px",
                 position: "relative",
+                fontFamily: "Nunito Sans",
               }}
             >
               Sq .Yard/Monthly
@@ -509,7 +578,12 @@ const Primary = ({ bgColor, color, title, onClose }) => {
           </Box>
           <Box>
             <Typography
-              sx={{ marginTop: "10px", fontSize: "12px", color: "gray" }}
+              sx={{
+                marginTop: "10px",
+                fontSize: "12px",
+                color: "gray",
+                fontFamily: "Nunito Sans",
+              }}
             >
               Minimum
             </Typography>
@@ -525,7 +599,9 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 position: "relative",
               }}
             >
-              <Typography sx={{ fontSize: "12px" }}>$190</Typography>
+              <Typography sx={{ fontSize: "12px", fontFamily: "Nunito Sans" }}>
+                $190
+              </Typography>
             </Box>
             <Typography
               sx={{
@@ -534,6 +610,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 padding: "6px",
                 top: "-6px",
                 position: "relative",
+                fontFamily: "Nunito Sans",
               }}
             >
               Sq .Yard/Monthly
@@ -541,7 +618,12 @@ const Primary = ({ bgColor, color, title, onClose }) => {
           </Box>
           <Box>
             <Typography
-              sx={{ marginTop: "10px", fontSize: "12px", color: "gray" }}
+              sx={{
+                marginTop: "10px",
+                fontSize: "12px",
+                color: "gray",
+                fontFamily: "Nunito Sans",
+              }}
             >
               Step
             </Typography>
@@ -554,10 +636,13 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 alignItems: "left",
                 paddingLeft: "10px",
                 top: "-4px",
+                fontFamily: "Nunito Sans",
                 position: "relative",
               }}
             >
-              <Typography sx={{ fontSize: "12px" }}>$190</Typography>
+              <Typography sx={{ fontSize: "12px", fontFamily: "Nunito Sans" }}>
+                $190
+              </Typography>
             </Box>
             <Typography
               sx={{
@@ -566,6 +651,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 padding: "6px",
                 top: "-6px",
                 position: "relative",
+                fontFamily: "Nunito Sans",
               }}
             >
               Sq .Yard/Monthly
@@ -591,6 +677,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
             border: "1px solid black",
             marginLeft: "20px",
             textTransform: "none",
+            fontFamily: "Nunito Sans",
           }}
           onClick={() => onClose()}
         >
@@ -602,6 +689,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
             color: "white",
             marginLeft: "20px",
             textTransform: "none",
+            fontFamily: "Nunito Sans",
           }}
           onClick={() => handlePriceChange()}
         >

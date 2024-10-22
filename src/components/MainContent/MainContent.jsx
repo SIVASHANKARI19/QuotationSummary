@@ -1,4 +1,4 @@
-import React ,{useEffect}from "react";
+import React, { useEffect } from "react";
 import Grid2 from "@mui/material/Grid2";
 import LeadDetails from "../LeadDetails/LeadDetails";
 import UnitDetails from "../LeadDetails/UnitDetails";
@@ -10,8 +10,8 @@ import { Typography, Box, Button } from "@mui/material";
 import QuotationDetails from "../LeadDetails/QuotationDetails/QuotationDetails";
 import four from "../../assets/4.png";
 import house from "../../assets/house.jpg";
-import { useDispatch } from 'react-redux';
-import { setUnits } from '../../redux/PricingSlice';
+import { useDispatch } from "react-redux";
+import { setUnits } from "../../redux/PricingSlice";
 
 const MainContent = () => {
   const breadcrumbs = [
@@ -20,8 +20,9 @@ const MainContent = () => {
       key="1"
       color="rgba(80,120,225)"
       href="/"
-     
+      fontFamily={"Nunito Sans"}
       fontSize={"14px"}
+      fontWeight={"bold"}
       onClick={handleClick}
     >
       Add Contact
@@ -30,42 +31,51 @@ const MainContent = () => {
       underline="hover"
       key="2"
       color="rgba(80,120,225)"
-     
+      fontFamily={"Nunito Sans"}
       fontSize={"14px"}
       onClick={handleClick}
+      fontWeight={"bold"}
     >
       Lead Details
     </Link>,
     <Typography
       key="3"
       sx={{ color: "rgb(80,120,225)" }}
-   
+      fontFamily={"Nunito Sans"}
       fontSize={"14px"}
+      fontWeight={"bold"}
     >
       Preview and create Lead
     </Typography>,
     <Typography
       key="3"
       sx={{ color: "rgb(80,120,225)" }}
-   
+      fontFamily={"Nunito Sans"}
       fontSize={"14px"}
+      fontWeight={"bold"}
     >
       Preview and create Lead
     </Typography>,
     <Box
       key="5"
       sx={{ display: "flex", alignItems: "center", color: "rgb(80,120,225)" }}
-     
+      fontFamily={"Nunito Sans"}
       fontSize={"14px"}
     >
       <img
         src={four}
         alt="four"
-        width="20px"
-        height="20px"
+        width="15px"
+        height="15px"
         style={{ marginRight: "8px" }}
       />
-      <Typography >
+      <Typography
+        key="3"
+        sx={{ color: "rgb(80,120,225)" }}
+        fontFamily={"Nunito Sans"}
+        fontSize={"14px"}
+        fontWeight={"bold"}
+      >
         Preview and create Lead
       </Typography>
     </Box>,
@@ -92,8 +102,8 @@ const MainContent = () => {
     },
     {
       id: 2,
-      name: "Burj Khalifa",
-      price: "$50.00",
+      name: "Jumeirah Estate",
+      price: "$250.00",
       description: "Downtown Dubai",
       sqrFt: 2500,
       img: house,
@@ -103,8 +113,8 @@ const MainContent = () => {
     },
     {
       id: 3,
-      name: "Burj Khalifa",
-      price: "$50.00",
+      name: "Jumeirah Estate",
+      price: "$250.00",
       description: "Downtown Dubai",
       sqrFt: 2500,
       img: house,
@@ -114,8 +124,8 @@ const MainContent = () => {
     },
     {
       id: 4,
-      name: "Burj Khalifa",
-      price: "$50.00",
+      name: "Jumeirah Estate",
+      price: "$150.00",
       description: "Downtown Dubai",
       sqrFt: 2500,
       img: house,
@@ -123,7 +133,7 @@ const MainContent = () => {
       bedCount: 2,
       homeCount: "2BHK",
     },
-    
+
     // Add other unit data here
   ];
   const handleOptionSelect = (option) => {
@@ -146,9 +156,9 @@ const MainContent = () => {
   return (
     <Box
       sx={{
-        height: "78vh",
+        height: "79vh",
         width: "90vw",
-        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        boxShadow: "0.5px 2px 5px rgba(0, 0, 0, 0.25)",
         borderRadius: "5px",
       }}
     >
@@ -158,7 +168,7 @@ const MainContent = () => {
           borderTopLeftRadius: "5px",
           borderTopRightRadius: "5px",
           padding: "10px",
-          borderBottom: "1px solid #d8d8d8",
+          borderBottom: "1px solid #e1e1e1",
         }}
       >
         {" "}
@@ -177,7 +187,7 @@ const MainContent = () => {
         container
         spacing={0}
         sx={{
-          flexGrow: 1, // Allow this box to take remaining space
+          flexGrow: 1, 
           display: "flex",
           paddingTop: "0",
           height: "65vh",
@@ -188,7 +198,7 @@ const MainContent = () => {
           size={4}
           padding={2}
           sx={{
-            flexGrow: 1, // Allow this box to take remaining space
+            flexGrow: 1, 
             display: "flex",
             backgroundColor: "white",
             flexDirection: "column",
@@ -217,29 +227,38 @@ const MainContent = () => {
         <Grid2
           size={4.5}
           sx={{
-            flexGrow: 1, // Allow this box to take remaining space
+            flexGrow: 1,
             display: "flex",
             alignSelf: "flex-start",
+
             flexDirection: "column",
           }}
         >
           <Typography
             padding={1}
-            sx={{ color: "#4E5A6B", fontSize: "14px", fontWeight: "bold",position: "relative",
-             paddingTop: "10px",paddingLeft: "20px" }}
+            sx={{
+              color: "#4E5A6B",
+              fontSize: "14px",
+              fontWeight: "bold",
+              position: "relative",
+              paddingTop: "10px",
+              paddingLeft: "20px",
+            }}
           >
             Unit Details
           </Typography>
-          <UnitDetails
-        unitsData={unitsData}
-        dropdownOptions={dropdownOptions}
-        onOptionSelect={handleOptionSelect} // Passing the option select handler
-      />
+          <Box ml={2}>
+            <UnitDetails
+              unitsData={unitsData}
+              dropdownOptions={dropdownOptions}
+              onOptionSelect={handleOptionSelect}
+            />
+          </Box>
         </Grid2>
         <Grid2
           size={3.5}
           sx={{
-            flexGrow: 1, // Allow this box to take remaining space
+            flexGrow: 1, 
             display: "flex",
             backgroundColor: "white",
             flexDirection: "column",
@@ -260,7 +279,7 @@ const MainContent = () => {
               left: "-15px",
             }}
           >
-            Quotation Details{" "}
+            Quotation Details
           </Typography>
           <QuotationSummary />
         </Grid2>
@@ -273,6 +292,7 @@ const MainContent = () => {
             backgroundColor: "white",
             width: "88.66vw",
             paddingBottom: "2px",
+            paddingTop: 1,
           }}
         >
           <Box>
@@ -283,6 +303,8 @@ const MainContent = () => {
                 border: "1px solid #d8d8d8",
                 textTransform: "none",
                 marginLeft: "20px",
+                fontWeight: "bold",
+                fontFamily: "Nunito Sans",
               }}
               contained
             >
@@ -297,6 +319,8 @@ const MainContent = () => {
                 border: "1px solid #d8d8d8",
                 textTransform: "none",
                 marginLeft: "20px",
+                fontWeight: "bold",
+                fontFamily: "Nunito Sans",
               }}
             >
               Cancel
@@ -307,9 +331,11 @@ const MainContent = () => {
                 color: "white",
                 marginLeft: "20px",
                 textTransform: "none",
+
+                fontFamily: "Nunito Sans",
               }}
             >
-              Save Quotation
+              Create Quotation
             </Button>
           </Box>
         </Box>

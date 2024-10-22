@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
@@ -29,6 +29,7 @@ const Sidebar = () => {
            borderRadius:"50%",
            fontSize:"34px",
         }} />
+      
       <DashboardIcon
         onClick={() => handleIconClick('dashboard')}
         sx={{

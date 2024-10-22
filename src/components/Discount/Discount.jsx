@@ -5,7 +5,8 @@ import {
   Typography,
   Box,
   Grid,
-  Button
+  Button,
+  Divider
 } from '@mui/material';
 import TabletAndroidIcon from '@mui/icons-material/TabletAndroid';
 import interior from '../../assets/house.jpg';
@@ -114,6 +115,7 @@ const Discount = () => {
                 <GoHome  fontSize="medium" sx={{ mr: 0.1 }} /> 2000 sq. ft
               </Typography>
       </CardContent>
+      <Divider sx={{ marginTop: -1,width:'90%',alignItems:'center' }}/>
       <Box
         mt={-1}
         display="flex"

@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Initial state of the units slice
+
 const initialState = {
   units: [],
   count: 0,
-  totalAmt: 0, // Initialize total amount
+  totalAmt: 0, 
   selectedAmenities: [],
   totalAmenities: 0 ,
-  totalAmenitiesPrice: 0// Track selected amenities
+  totalAmenitiesPrice: 0
 };
 
 const unitsSlice = createSlice({

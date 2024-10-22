@@ -37,10 +37,10 @@ const RemoveComponent = () => {
   };
 
   return (
-      <Box sx={{ scrollbarWidth: 'none', msScrollbarWidth: 'none', padding: '10px 20px' }}>
+      <Box sx={{ scrollbarWidth: 'none', msScrollbarWidth: 'none', }}>
           {/* Header Section */}
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px', width: "100%", marginLeft: "10px" }}>
-              <Typography variant="h7">Remove Property</Typography>
+              <Typography sx={{ fontSize: '14px', fontWeight: 'bold',fontFamily: 'Nunito Sans' }}>Remove Property</Typography>
               <IconButton onClick={handleClose}>
                   <CloseOutlined />
               </IconButton>
@@ -51,7 +51,7 @@ const RemoveComponent = () => {
           <Box sx={{ padding: '10px 20px', width: "55vw" }}>
               <Box display={'flex'}>
                   <PropertyDetails />
-                  <Box sx={{ paddingLeft: 2, flexGrow: 1, backgroundColor: '#F8F9FB', pt: '1rem' }}>
+                  <Box sx={{ paddingLeft: 2, flexGrow: 1, backgroundColor: '#F8F9FB', pt: '1rem',fontFamily: 'Nunito Sans' }}>
                       <Typography fontSize={'14px'} gutterBottom>
                           Unit Price Detail
                       </Typography>
@@ -80,7 +80,7 @@ const RemoveComponent = () => {
                       <Divider sx={{ margin: '10px 0' }} />
                       
                       {/* Update Button */}
-                      <Button variant="contained" color="primary" sx={{ width: '100%' }}>
+                      <Button variant="contained" color="primary" sx={{ width: '100%',fontFamily: 'Nunito Sans' }}>
                           Update & Save
                       </Button>
                   </Box>
