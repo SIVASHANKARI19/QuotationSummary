@@ -10,15 +10,15 @@ const SearchContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  width: 400px;
+  width: 300px;
   border-radius: 5px;
-  padding: 5px 10px;
-  height:600px;
+
+  height:50px;
 `;
 
 const StyledInput = styled.input`
   border: none;
-  padding: 10px 10px 10px 40px; /* Add padding to the left to make space for the icon */
+  padding: 5px 5px 4px 40px; /* Add padding to the left to make space for the icon */
   width: 100%;
   outline: none;
   border-radius: 5px;
@@ -68,9 +68,9 @@ const TopNavBar = () => {
           </Typography>
 
           {/* Centered Search Bar */}
-          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: "center", height: "30px",marginBottom:"5px" }}>
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: "center", height: "10px" }}>
       <SearchContainer>
-        <StyledSearchIcon sx={{ marginLeft: "10px", color: "white" }} />
+        <StyledSearchIcon sx={{ color: "white" ,fontSize:"18px"}} />
         <StyledInput placeholder="Search" />
       </SearchContainer>
     </Box>
@@ -78,11 +78,11 @@ const TopNavBar = () => {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
-             sx={{marginTop:"5px",marginRight:"10px"}}
+             sx={{marginTop:"5px",marginRight:"5px"}}
             >
- <Box >
-      <Badge color="primary" variant="dot">
-      <NotificationsIcon />
+ <Box  marginBottom={1} >
+      <Badge color="primary" variant="dot" >
+      <NotificationsIcon sx={{mr:"-6px",bottom:"-10px"}} />
       </Badge>
     </Box>
               

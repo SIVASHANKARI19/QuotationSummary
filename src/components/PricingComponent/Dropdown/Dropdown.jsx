@@ -20,19 +20,19 @@ const Dropdown = ({WorkOptions}) => {
                   id="demo-simple-select"
                   value={option}
                   onChange={handleChange}
-                  sx={{ height: 30,width:"13.4vw", fontSize: '0.8rem', fontWeight: '410', color: 'black',fontFamily:'poppins' ,marginLeft:'10px',padding:'7px' }}
+                  sx={{ height: 30,width:"13.4vw", fontSize: '0.8rem', fontWeight: '410', color: 'black',marginLeft:'10px',padding:'7px' }}
                 >
                   {WorkOptions.map((option) => (
                     <MenuItem
                       style={{
-                        padding: '0.5rem', 
-                        fontSize: '1rem',
+                       
+                        fontSize: '0.8rem',
                         width: 'fit-content',    
                         scrollbarWidth: 'none',
                         overflowY: 'scroll',
                         backgroundColor: 'transparent',
-                        color: 'black',
-                        fontFamily:'poppins'
+                        color: '#4E5A6B',
+                       
                       }}
                       key={option.value}
                       value={option.value}

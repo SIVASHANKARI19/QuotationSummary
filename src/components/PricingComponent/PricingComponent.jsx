@@ -101,7 +101,7 @@ const PricingComponent = () => {
             </Tooltip>
            
             <IconButton>
-              <ChevronRightOutlinedIcon sx={{ color: item.arrowColor, marginLeft: "10px" }} />
+              <ChevronRightOutlinedIcon sx={{ color: item.arrowColor,padding:"2px"}} />
             </IconButton>
           </Box>
         </Box>

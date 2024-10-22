@@ -37,7 +37,7 @@ const Utilities = ({close}) => {
   };
 
   return (
-    <Box sx={{ overflow: 'hidden', width: '28vw' }}>
+    <Box sx={{ overflow: 'hidden', width: '25vw' }}>
       <Typography variant="h6" padding={1} marginTop={2} fontSize={18} color="gray">
         Utilities
       </Typography>
@@ -50,15 +50,15 @@ const Utilities = ({close}) => {
           gap: '10px',
         }}
       >
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px',width:"28vw" ,backgroundColor:"rgb(237,247,248)",padding:"10px",borderRadius:"5px"}}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px',width:"25vw" ,backgroundColor:"rgb(237,247,248)",padding:"10px",borderRadius:"5px"}}>
         <Box component="img" src={amenity} alt="Lead Profile" sx={{ height: 40, width: 40 }} >
 
         </Box>
 
-        <Typography color='rgb(147,196,199)'><span style={{ fontWeight: 'bold',color:"rgb(147,196,199)" }}>03</span> Total Utilities</Typography>
-<Box  ><Typography paddingLeft={"150px"} color='rgb(147,196,199)' fontWeight={"bold"}>$200.00</Typography></Box>
+        <Typography color='rgb(147,196,199)'fontSize={12}><span style={{ fontWeight: 'bold',color:"rgb(147,196,199)" ,fontSize:12}}>03</span> Total Utilities</Typography>
+<Box  ><Typography paddingLeft={"150px"} color='rgb(147,196,199)' fontWeight={"bold"} fontSize={12}>$200.00</Typography></Box>
         </Box>
-        
+        <Typography color='gray' marginRight={'270px'} fontSize={12}>Available Utilities</Typography>
        
         {amenities.map((amenity) => (
           <Box key={amenity.id}>
@@ -69,7 +69,7 @@ const Utilities = ({close}) => {
                 paddingRight: '10px',
                 border: '1px solid #d8d8d8',
                 borderRadius: '5px',
-                width: '28vw',
+                width: '25vw',
                 flexWrap: 'wrap',
                 overflow: 'hidden',
                 transition: '0.3s ease',
@@ -85,9 +85,9 @@ const Utilities = ({close}) => {
                 src={amenity.image}
                 alt={`${amenity.name} Icon`}
                 sx={{
-                  height: 70,
+                  height: 50,
                   padding: 1,
-                  width: 70,
+                  width: 50,
                   borderRadius: '20%',
                   '&:hover': {
                     cursor: 'pointer',
@@ -96,10 +96,10 @@ const Utilities = ({close}) => {
               />
               {/* Text next to the image */}
               <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                <Typography sx={{ fontSize: { xs: '12px', md: '14px' }, fontWeight: 'bold' }}>
+                <Typography sx={{ fontSize: { xs: '12px', md: '12px' }, fontWeight: 'bold' }}>
                   {amenity.name}
                 </Typography>
-                <Typography sx={{ fontSize: { xs: '14px', md: '14px' }, color: 'gray' }}>
+                <Typography sx={{ fontSize: { xs: '14px', md: '12px' }, color: 'gray' }}>
                   {amenity.price} • {amenity.validity}
                 </Typography>
               </Box>
@@ -117,12 +117,13 @@ const Utilities = ({close}) => {
                 sx={{
                   border: '1px solid #d8d8d8',
                   borderTop: 'none',
-                  width: '28vw',
-                  height: 'fit-content',
+                  width: '25vw',
+                  height: '4vh',
                   textAlign: 'center',
                   backgroundColor: 'white',
                   display: 'flex',
                   alignItems: 'center',
+                  borderBottomLeftRadius:"5px", borderBottomRightRadius:"5px"
                 }}
               >
                 <Checkbox

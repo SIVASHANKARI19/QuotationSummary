@@ -16,7 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // Create a theme instance with Poppins font
 const theme = createTheme({
   typography: {
-    fontFamily: '"Poppins"'
+    fontFamily: '"Nunito Sans", sans-serif',
   },
 });
 

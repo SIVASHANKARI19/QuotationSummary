@@ -1,5 +1,5 @@
-import { Box, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import React, { useState } from 'react';
+import { Box, CardMedia, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton } from '@mui/material';
+import React, { useState,useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -18,84 +18,49 @@ import Discount2 from '../Discount/RemoveComponent';
 import { GoHome } from "react-icons/go";
 import { LuBath } from "react-icons/lu";
 import { FaBed } from "react-icons/fa";
+import { DeleteOutline } from '@mui/icons-material';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteUnit } from '../../redux/PricingSlice';
+import Unit from '../UnitDetails/UnitDetails' // Adjust the import path as necessary
+import AddDiscount from '../RemoveComponent/AddDiscount';
 
-import { FaBath } from "react-icons/fa6";
-const unitsData = [
-  {
-    id: 1,
-    name: 'Jumeirah Estate',
-    price: '$900.00',
-    description: 'Golf Estate',
-    sqrFt: 2000,
-    img: house, // You can replace this with different images if needed
-    hotelCount: 3,
-    bedCount: 3,
-    homeCount: '2BHK',
-  },
-  {
-    id: 2,
-    name: 'Burj Khalifa',
-    price: '$1,200.00',
-    description: 'Downtown Dubai',
-    sqrFt: 2500,
-    img: house,
-    hotelCount: 2,
-    bedCount: 2,
-    homeCount: '2BHK',
-  },
-  {
-    id: 3,
-    name: 'Palm Jumeirah',
-    price: '$1,800.00',
-    description: 'Palm Island',
-    sqrFt: 2500,
-    img: house,
-    hotelCount: 4,
-    bedCount: 3,
-    homeCount: '2BHK',
-  },
-  {
-    id: 4,
-    name: 'Dubai Marina',
-    price: '$1,500.00',
-    description: 'Dubai Marina',
-    sqrFt: 2500,
-    img: house,
-    hotelCount: 3,
-    bedCount: 3,
-    homeCount: '2BHK',
-  },
-  {
-    id: 5,
-    name: 'Dubai Marina',
-    price: '$1,500.00',
-    description: 'Dubai Marina',
-    sqrFt: 2500,
-    img: house,
-    hotelCount: 3,
-    bedCount: 3,
-    homeCount: '2BHK',
-  },
-];
-const UnitDetails = () => {
-  const [showDropDown, setShowDropDown] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
+const UnitDetails = ({
+  // unitsData,
+ 
+  // showDropDown,
+  // handleDropdownToggle,
+  // anchorEl,
+  // handleOptionSelect,
+  // selectedOption,
+  // dialogOpen,
+  // handleCloseDialog,
+  // PricingComponent,
+  // Amenities,
+  // Utilities,
+  // Discount2,
+}) => {
+ 
+  const dispatch = useDispatch();
+  const units = useSelector((state) => state.units.units);
+  const[showDropDown,setShowDropDown]=useState(false);
+  const[selectedOption,setSelectedOption]=useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [selectedOption, setSelectedOption] = useState(null); // Track selected option
-
-  const dropdownOptions = ["Add Pricing Component", "Add Amenities", "Add Utilities", "Add Discount", "Remove Component"];
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const [showUnitData, setShowUnitData] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState(null);;
 
   const handleDropdownToggle = (event) => {
     setShowDropDown((prev) => !prev);
     setAnchorEl(event.currentTarget);
   };
-  const handleCloseDialog = () => {
-    if(selectedOption === "Add Amenities"){
-      console.log("hello");
-    }
-    setDialogOpen(false);
-    setSelectedOption(null); // Reset selected option when dialog closes
-};
+  const dropdownOptions = [
+    "Add Pricing Component",
+    "Add Amenities",
+    "Add Utilities",
+    "Add Discount",
+    "Remove Component",
+  ];
+ 
 
 
   const handleOptionSelect = (option) => {
@@ -103,48 +68,78 @@ const UnitDetails = () => {
     console.log('Option selected in UnitDetails:', option);
     
     // Open the dialog if the selected option is "Add Pricing Component"
-    if (option === "Add Pricing Component" || option === "Add Amenities" || option ==="Add Utilities" || option === "Add Discount") {
+    if (option === "Add Pricing Component" || option === "Add Amenities" || option ==="Add Utilities" || option === "Add Discount"|| option === "Remove Component") {
         setDialogOpen(true);
     }
 };
+const handleCloseDialog = () => {
+  setDialogOpen(false);
+  setSelectedOption(null); // Reset selected option when dialog closes
+  setShowUnitData(false); // Reset showUnitData when closing the unit details
+};
 
+const handleImageClick = (unit) => {
+  setSelectedUnit(unit); // Set the selected unit to be passed to the Unit component
+  setShowUnitData(true); // Show the unit data
+};
+
+ useEffect(() => {
+  console.log('Updated units:', units); // Log updated units
+}, [units]);
 
   return (
-    <Box  sx ={{display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)', // Exactly 2 columns
-    gap: '10px', // Spacing between the grid items
-    padding: '10px', // Some padding around the grid for better layout
-    overflowY: 'auto', 
-    scrollbarWidth: 'none', // Enable scrolling if the content exceeds height
-    maxHeight: '58vh',
-  }}>
-      {unitsData.map((unit) => (
+    <Box sx={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)', 
+      gap: '10px', 
+      padding: '10px',
+      overflowY: 'scroll',
+      scrollbarWidth: 'none',
+      maxHeight: '58vh',
+      position: 'relative',
+    }}>
+      {units.map((unit) => (
         <Card key={unit.id} sx={{ width: "92%", display: 'flex', flexDirection: 'column', height: "100%" }}>
-          <Box sx={{ padding: 1, paddingBottom: 0 }}>
-            <CardMedia
-              sx={{ height: 105, borderRadius: 1 ,alignSelf: 'center',justifyContent: 'center'}}
+          <Box sx={{ padding: 1, paddingBottom: 0, position: 'relative' }}>
+          <CardMedia
+  // Updated image click handler
+              sx={{ height : 105, borderRadius: 1, alignSelf: 'center', justifyContent: 'center',cursor: 'pointer', }}
               image={unit.img}
               title={unit.name}
+              onClick={() => handleImageClick(unit)}
+            />
+
+            <DeleteOutline
+              sx={{
+                cursor: 'pointer',
+                color: 'red',
+                fontSize: '1.2rem',
+                borderRadius: '50%',
+                backgroundColor: '#ffecec',
+                padding: '2px',
+                position: 'absolute',
+                top: '15px',
+                right: '16px',
+              }}
+              onClick={() => {
+                dispatch(deleteUnit(unit.id)); // Use the action creator
+              }}
             />
           </Box>
           <CardContent sx={{ paddingBottom: 0, display: 'flex', flexDirection: 'column' }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }} >
               <Typography fontSize={14} fontWeight={600}>
                 {unit.name}
               </Typography>
-              <Typography fontSize={14} fontWeight={600} >
+              <Typography fontSize={14} fontWeight={600}>
                 {unit.price}
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex',flexDirection: 'row',alignItems: 'center', justifyContent: 'center',justifyContent: 'space-around',alignItems: 'center',paddingBottom: 1.5}}>
+            <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingBottom: 1.5 }}>
               <Typography variant="body2" sx={{ color: 'rgb(194,199,205)', fontSize: 13 }}>
                 {unit.description}
-
               </Typography>
-              <Typography color='rgb(194,199,205)'>
-              • 
-              </Typography>
+              <Typography color='rgb(194,199,205)'>•</Typography>
               <Typography variant="body2" sx={{ color: 'rgb(194,199,205)', fontSize: 13 }}>
                 {unit.sqrFt} sqft
               </Typography>
@@ -153,69 +148,72 @@ const UnitDetails = () => {
               <Typography variant="body2" sx={{ color: 'rgb(194,199,205)', fontSize: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
                 <HotelIcon fontSize="small" sx={{ mr: 0.5 }} /> {unit.hotelCount}
                 <Typography sx={{ mr: 1 }}>•</Typography>
-                <LuBath  fontSize="medium" sx={{ mr: 0.5 }} /> {unit.bedCount}
+                <LuBath fontSize="medium" sx={{ mr: 0.5 }} /> {unit.bedCount}
                 <Typography sx={{ mx: 1 }}>•</Typography>
-                <GoHome  fontSize="medium" sx={{ mr: 0.1 }} /> {unit.homeCount}
+                <GoHome fontSize="medium" sx={{ mr: 0.1 }} /> {unit.homeCount}
               </Typography>
             </Box>
           </CardContent>
           <CardActions sx={{ justifyContent: 'center', alignItems: 'center' }}>
             <Button onClick={handleDropdownToggle}
               size="small"
-              sx={{ display: 'flex', alignItems: 'center',textTransform: 'none', fontSize: 12,padding: 0,}}
-            >
-              <AddIcon sx={{fontSize: 12,mr: 1}} />
-              Custamize
+              sx={{ display: 'flex', alignItems: 'center', textTransform: 'none', fontSize: 12, padding: 0 }}>
+              <AddIcon sx={{ fontSize: 12, mr: 1 }} />
+              Customize
             </Button>
           </CardActions>
         </Card>
       ))}
-      
+
       {showDropDown && (
         <Dropdown
           setShowDropDown={() => setShowDropDown(false)}
           options={dropdownOptions}
           anchorEl={anchorEl}
-          onOptionSelect={handleOptionSelect} // Pass the callback to handle the selected option
+          onOptionSelect={handleOptionSelect}
         />
       )}
-      
+
       {/* Render the selected option */}
-      {selectedOption==="Add Pricing Component" && (
+      {selectedOption === "Add Pricing Component" && (
         <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-       
-        <DialogContent>
-           <PricingComponent />
-        </DialogContent>
-      
-      </Dialog>
+          <DialogContent>
+            <PricingComponent />
+          </DialogContent>
+        </Dialog>
       )}
-        {selectedOption==="Add Amenities" && (
-        
+      {selectedOption === "Add Amenities" && (
         <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-       
-        <DialogContent>
-           <Amenities close ={handleCloseDialog}/>
-        </DialogContent>
-      
-      </Dialog>
+          <DialogContent>
+            <Amenities close={handleCloseDialog} />
+          </DialogContent>
+        </Dialog>
       )}
-      {selectedOption==="Add Utilities" && (
-        
+      {selectedOption === "Add Utilities" && (
         <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-       
-        <DialogContent>
-           <Utilities close={handleCloseDialog} />
-        </DialogContent>
-      
-      </Dialog>
+          <DialogContent>
+            <Utilities close={handleCloseDialog} />
+          </DialogContent>
+        </Dialog>
       )}
-      {selectedOption==="Remove Component" && (
-        
-        <Dialog open={dialogOpen} onClose={handleCloseDialog}   maxWidth="1000px"  >
-           <Discount2 close={handleCloseDialog} />
-       </Dialog>
+      {selectedOption === "Remove Component" && (
+        <Dialog open={dialogOpen} onClose={handleCloseDialog} maxWidth="md">
+          <DialogContent>
+            <Discount2 close={handleCloseDialog} />
+          </DialogContent>
+        </Dialog>
       )}
+        {selectedOption === "Add Discount" && (
+        <Dialog open={dialogOpen} onClose={handleCloseDialog}  maxWidth="md"  fullWidth sx={{scrollbarWidth:'none',msScrollbarWidth:'none',fontFamily:'Nunito Sans',height:'100vh'}}>
+          <DialogContent>
+            < AddDiscount close={handleCloseDialog} />
+          </DialogContent>
+        </Dialog>
+      )}
+     {showUnitData && (
+  <Unit onClose={handleCloseDialog} />
+)}
+
     </Box>
   );
 };

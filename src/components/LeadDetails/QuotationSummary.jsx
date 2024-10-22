@@ -7,8 +7,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Divider from "@mui/material/Divider";
 import TableHead from "@mui/material/TableHead";
+import { useSelector } from "react-redux";
 
 const QuotationSummary = () => {
+  const count = useSelector((state) => state.units.count);
+  const TotalAmt = useSelector((state) => state.units.totalAmt);
+
   return (
     <Box
       sx={{
@@ -95,7 +99,7 @@ const QuotationSummary = () => {
                    
                   }}
                 >
-                  3
+                  {count}
                 </TableCell>
                 <TableCell
                   align="right"
@@ -109,7 +113,7 @@ const QuotationSummary = () => {
                     
                   }}
                 >
-                  $ 3,600.00
+                  ${TotalAmt}
                 </TableCell>
               </TableRow>
 
@@ -150,7 +154,7 @@ const QuotationSummary = () => {
                      fontWeight:"bold"
                   }}
                 >
-                  - $ 100.00
+                0
                 </TableCell>
               </TableRow>
               {/* Divider below Total Discount */}
@@ -280,7 +284,7 @@ const QuotationSummary = () => {
           }}
         >
           <Box>Quote Amount</Box>
-          <Box>$ 4,148.00</Box>
+          <Box>{TotalAmt+648}</Box>
         </Box>
       </Box>
     </Box>

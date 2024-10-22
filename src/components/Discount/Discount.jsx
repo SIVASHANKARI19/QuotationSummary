@@ -8,12 +8,14 @@ import {
   Button
 } from '@mui/material';
 import TabletAndroidIcon from '@mui/icons-material/TabletAndroid';
-import interior from '../../assets/interior.jpg';
+import interior from '../../assets/house.jpg';
 import { GoHome } from "react-icons/go";
 import { LuBath } from "react-icons/lu";
 import HotelIcon from '@mui/icons-material/Hotel';
+import { useSelector } from 'react-redux';
 
 const PropertyImage = ({ alt, image }) => (
+
   <Grid item xs={6}>
     <CardMedia
       component="img"
@@ -30,6 +32,7 @@ const PropertyImage = ({ alt, image }) => (
 );
 
 const Discount = () => {
+  const imageDetails = useSelector((state) => state.units.units);
   return (
     <Card
       sx={{
@@ -48,6 +51,7 @@ const Discount = () => {
           borderTopRightRadius: 2,
         }}
       >
+        
         <CardMedia
           component="img"
           alt="Main Property Image"

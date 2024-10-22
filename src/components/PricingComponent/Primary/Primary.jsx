@@ -6,6 +6,9 @@ import { FormControl } from "@mui/material";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import SliderComponent from "../../Slider/Slider";
+import { useDispatch,useSelector } from "react-redux";
+import {setTotalAmt} from "../../../redux/PricingSlice";
+import { Close } from "@mui/icons-material";
 
 const Primary = ({ bgColor, color, title, onClose }) => {
   const [selectedRevenueType, setSelectedRevenueType] = useState("Lease");
@@ -17,11 +20,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
     { value: 1, label: "Pricing Component" },
     { value: 2, label: "In Development" },
     { value: 3, label: "Deployed to Staging" },
-    { value: 4, label: "Verified in Staging" },
-    { value: 5, label: "Approved for Production" },
-    { value: 6, label: "Deployed to Production" },
-    { value: 7, label: "Verified in Production" },
-    { value: 8, label: "Closed" },
+    
   ];
   const pricingComponentOptions = [
     { value: 1, label: "GST" },
@@ -30,6 +29,33 @@ const Primary = ({ bgColor, color, title, onClose }) => {
     { value: 4, label: "TDS" },
     { value: 5, label: "GST" },
   ];
+  const [inputValue, setInputValue] = useState('');
+  const dispatch = useDispatch();
+  const totalAmount = useSelector((state) => state.units.totalAmt); // Accessing the total amount from Redux state
+
+  const handleUOMValue = (event) => {
+      const value = parseFloat(event.target.value); // Get the input value as a float
+      setInputValue(value); // Update the local input value
+
+  }
+     // Only dispatch if value is a valid number
+    
+     const handlePriceChange = () => {
+      const value = parseFloat(inputValue); // Ensure the input value is a float
+  
+      // Only dispatch if the value is a valid number
+      if (!isNaN(value)) {
+          // Calculate new total by adding the new input value to the current total amount
+          const newTotal = value; // Only the new input value
+          dispatch(setTotalAmt(newTotal)); // Update the total amount in the Redux store
+      } else {
+          console.error("Invalid input: Not a number");
+      }
+      
+      console.log("Input Value:", value);
+      onClose(); // Close the modal or popup after handling the input
+  };
+  
   return (
     <Box sx={{ height: "60vh", width: "100%" }}>
       {/* Header */}
@@ -337,6 +363,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
               >
                 <OutlinedInput
                   id="outlined-adornment-weight"
+                
                   endAdornment={
                     <InputAdornment position="end" fontSize={10}>
                       {title === "Primary" ? "SAR/Total" : "$/Monthly"}{" "}
@@ -417,6 +444,9 @@ const Primary = ({ bgColor, color, title, onClose }) => {
           >
             <OutlinedInput
               id="outlined-adornment-weight"
+              value={inputValue || ''} // Ensure value is a string or empty for controlled input
+              onChange={(e) => handleUOMValue(e)}
+            
               endAdornment={
                 <InputAdornment fontSize={10} position="end">
                   {title === "Primary" ? "SAR/Total" : "$/Monthly"}
@@ -430,7 +460,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
                 borderRadius: "0.2rem",
                 height: "38px",
                 margin: "10px",
-                fontSize: "8px",
+                fontSize: "13px",
               }}
             />
           </FormControl>
@@ -573,7 +603,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
             marginLeft: "20px",
             textTransform: "none",
           }}
-          onClick={() => onClose()}
+          onClick={() => handlePriceChange()}
         >
           Create Pricing Component
         </Button>
