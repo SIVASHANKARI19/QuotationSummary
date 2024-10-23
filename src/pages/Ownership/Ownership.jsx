@@ -27,12 +27,10 @@ function Ownership() {
           <Box
             sx={{
               flexGrow: 1,     
-              display: 'flex',     
-           
-              //  backgroundColor:'red',    
+              display: 'flex',
                alignItems:"center",
-               height:"80vh",
-               justifyContent:"center"
+               justifyContent:"center",
+                
                   
             }}
           >

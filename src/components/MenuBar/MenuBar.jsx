@@ -11,6 +11,7 @@ const MenuBar = () => {
         width: "95.66vw",
         display: "flex",
         alignItems: "center",
+       
       }}
     >
       <ArrowBackIosNewIcon
@@ -21,6 +22,7 @@ const MenuBar = () => {
           width: "30px",
           height: "30px",
           padding: "7px",
+          marginLeft: "30px",
         }}
       ></ArrowBackIosNewIcon>
       <Typography p={2} fontWeight={600} fontFamily={"Nunito Sans"}>

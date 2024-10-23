@@ -270,7 +270,7 @@ const QuotationSummary = () => {
             fontSize: "14px",
             color: "#1F2937",
             alignItems: "center",
-            fontFamily: "Nunito Sans", 
+            fontFamily: "Nunito Sans", // Darker shade for the final amount
           }}
         >
           <Box>Quote Amount</Box>

@@ -8,15 +8,15 @@ const QuotationDetails = ({
   gracePeriod 
 }) => {
   return (
-    <div style={{ padding: "20px" }}>
-      <Typography sx={{  fontWeight: "bold", fontSize: "12px", color: "#4E5A6B", ml: "8px",fontFamily: 'Nunito Sans' }}>
+    <div style={{ alignItems: "center",marginLeft: "10px",marginTop: "10px" }}>
+      <Typography sx={{  fontWeight: "bold", fontSize: "12px", color: "#4E5A6B", fontFamily: 'Nunito Sans',paddingBottom: "10px",paddingTop: "10px" }}>
         Quotation Details
       </Typography>
       <Box
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(3, minmax(120px, 1fr))",
-          margin: "10px",
+         
           gap: "20px",
           marginTop: "20px",
        

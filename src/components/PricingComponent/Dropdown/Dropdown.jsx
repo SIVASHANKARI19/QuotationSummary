@@ -27,6 +27,7 @@ const Dropdown = ({ WorkOptions }) => {
             color: "black",
             marginLeft: "10px",
             padding: "7px",
+            fontFamily: "Nunito Sans",
           }}
         >
           {WorkOptions.map((option) => (
@@ -36,7 +37,7 @@ const Dropdown = ({ WorkOptions }) => {
                 width: "fit-content",
                 scrollbarWidth: "none",
                 overflowY: "scroll",
-
+                backgroundColor: "white",
                 color: "#4E5A6B",
                 fontFamily: "Nunito Sans",
               }}

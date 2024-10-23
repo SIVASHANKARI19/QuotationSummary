@@ -62,6 +62,7 @@ const UnitDetails = (
     setShowDropDown((prev) => !prev);
     setAnchorEl(event.currentTarget);
   };
+ 
   const dropdownOptions = [
     "Add Pricing Component",
     "Add Amenities",
@@ -89,6 +90,10 @@ const UnitDetails = (
     setDialogOpen(false);
     setSelectedOption(null); // Reset selected option when dialog closes
     setShowUnitData(false); // Reset showUnitData when closing the unit details
+  };
+  const handleCloseDropDown = () => {
+    setShowDropDown(false);
+    setAnchorEl(null);
   };
 
   const handleImageClick = (unit) => {
@@ -256,24 +261,26 @@ const UnitDetails = (
           options={dropdownOptions}
           anchorEl={anchorEl}
           onOptionSelect={handleOptionSelect}
+           close={()=> handleCloseDropDown()}
         />
       )}
 
       {/* Render the selected option */}
       {selectedOption === "Add Pricing Component" && (
         <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-          <DialogContent>
-            <PricingComponent />
+          <DialogContent sx={{ p: 1 }}>
+            <PricingComponent close={handleCloseDialog}/>
           </DialogContent>
         </Dialog>
       )}
-      {selectedOption === "Add Amenities" && (
-        <Dialog open={dialogOpen} onClose={handleCloseDialog}>
-          <DialogContent>
-            <Amenities close={handleCloseDialog} />
-          </DialogContent>
-        </Dialog>
-      )}
+  {selectedOption === "Add Amenities" && (
+  <Dialog open={dialogOpen} onClose={handleCloseDialog}>
+    <DialogContent>
+      <Amenities close={handleCloseDialog} />
+    </DialogContent>
+  </Dialog>
+)}
+
       {selectedOption === "Add Utilities" && (
         <Dialog open={dialogOpen} onClose={handleCloseDialog}>
           <DialogContent>
@@ -281,13 +288,16 @@ const UnitDetails = (
           </DialogContent>
         </Dialog>
       )}
-      {selectedOption === "Remove Component" && (
-        <Dialog open={dialogOpen} onClose={handleCloseDialog} maxWidth="md">
-          <DialogContent>
-            <Discount2 close={handleCloseDialog} />
-          </DialogContent>
-        </Dialog>
-      )}
+
+
+{selectedOption === "Remove Component" && (
+  <Dialog open={dialogOpen} onClose={handleCloseDialog} maxWidth="md" fullWidth>
+    <DialogContent padding={0}>
+      <Discount2 onClose={handleCloseDialog} />
+    </DialogContent>
+  </Dialog>
+)}
+
       {selectedOption === "Add Discount" && (
         <Dialog
           open={dialogOpen}
@@ -301,7 +311,7 @@ const UnitDetails = (
             height: "100vh",
           }}
         >
-          <DialogContent>
+          <DialogContent >
             <AddDiscount close={handleCloseDialog} />
           </DialogContent>
         </Dialog>

@@ -1,4 +1,4 @@
-import { Typography, Box, Tooltip, Button } from "@mui/material";
+import { Typography, Box, Tooltip, Button,TextField, Divider } from "@mui/material";
 import React, { useState } from "react";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import Dropdown from "../Dropdown/Dropdown";
@@ -16,6 +16,8 @@ const Primary = ({ bgColor, color, title, onClose }) => {
   const [chargable, setChargable] = useState("yes");
   const [PricingBasedOn, setPricingBasedOn] = useState("monthly");
   const [componentBasedOn, setComponentBasedOn] = useState("amount");
+  const [uomValue, setUomValue] = useState(""); // UOM value for one TextField
+  const [priceValue, setPriceValue] = useState(""); 
   const WorkOptions = [
     { value: 1, label: "Pricing Component" },
     { value: 2, label: "In Development" },
@@ -32,24 +34,39 @@ const Primary = ({ bgColor, color, title, onClose }) => {
   const dispatch = useDispatch();
   const totalAmount = useSelector((state) => state.units.totalAmt); 
 
-  const handleUOMValue = (event) => {
-    const value = parseFloat(event.target.value); 
+  const handleUOMValueChange = (event) => {
+    const value =parseFloat(event.target.value);
     setInputValue(value);
+    setUomValue(value); // Update UOM value
+    setUomValue(event.target.value); // Update UOM value
   };
 
+  // Handle Price value change
+  const handlePriceValueChange = (event) => {
+    setPriceValue(event.target.value); // Update Price value
+  };
 
+  // Handle price change validation
   const handlePriceChange = () => {
-    const value = parseFloat(inputValue); 
+    const value = parseFloat(inputValue); // Parse the price value
     if (!isNaN(value)) {
-      const newTotal = value; 
-      dispatch(setTotalAmt(newTotal)); 
+      const newTotal = value;
+      dispatch(setTotalAmt(newTotal));
     } else {
       console.error("Invalid input: Not a number");
     }
-
-    console.log("Input Value:", value);
-    onClose(); 
-  };
+    onClose();
+  }
+  
+    const handleInputChange = (e) => {
+      // Get the value and filter out non-numeric characters
+      const numericValue = e.target.value.replace(/[^0-9]/g, "");
+      setInputValue(numericValue);
+      
+      // Console log the numeric value
+      console.log(numericValue);
+    };
+  
 
   return (
     <Box sx={{ height: "60vh", width: "100%" }}>
@@ -66,7 +83,8 @@ const Primary = ({ bgColor, color, title, onClose }) => {
       >
         <Typography
           sx={{
-            fontSize: "16px",
+            fontSize: "14px",
+            fontWeight: "600",
             margin: "10px",
             color: color,
             fontFamily: "Nunito Sans",
@@ -98,6 +116,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
           />
         </Tooltip>
       </Box>
+     
       {/* Form */}
       <form
         style={{
@@ -496,35 +515,35 @@ const Primary = ({ bgColor, color, title, onClose }) => {
             UOM Value
           </Typography>
           <FormControl
-            sx={{
-              width: "100%",
-              backgroundColor: "white",
-              borderRadius: "0.5rem",
-              height: "40px",
-            }}
-            variant="outlined"
-          >
-            <OutlinedInput
-              id="outlined-adornment-weight"
-              value={inputValue || ""}
-              onChange={(e) => handleUOMValue(e)}
-              endAdornment={
-                <InputAdornment fontSize={10} position="end">
-                  {title === "Primary" ? "SAR/Total" : "$/Monthly"}
-                </InputAdornment>
-              }
-              aria-describedby="outlined-weight-helper-text"
-              inputProps={{
-                "aria-label": "weight",
-              }}
-              sx={{
-                borderRadius: "0.2rem",
-                height: "38px",
-                margin: "10px",
-                fontSize: "13px",
-              }}
-            />
-          </FormControl>
+        sx={{
+          width: "100%",
+          backgroundColor: "white",
+          borderRadius: "0.5rem",
+          height: "40px",
+        }}
+        variant="outlined"
+      >
+        <OutlinedInput
+          id="outlined-adornment-weight"
+          value={inputValue || ""} // Controlled value for UOM
+          onChange={handleUOMValueChange} // Handle UOM input change
+          endAdornment={
+            <InputAdornment fontSize={10} position="end">
+              {title === "Primary" ? "SAR/Total" : "$/Monthly"}
+            </InputAdornment>
+          }
+          aria-describedby="outlined-weight-helper-text"
+          inputProps={{
+            "aria-label": "weight",
+          }}
+          sx={{
+            borderRadius: "0.2rem",
+            height: "38px",
+            margin: "10px",
+            fontSize: "13px",
+          }}
+        />
+      </FormControl>
         </Box>
       ) : null}
       {title === "Primary" ? (
@@ -548,21 +567,31 @@ const Primary = ({ bgColor, color, title, onClose }) => {
               Maximum
             </Typography>
             <SliderComponent color="red" value={95} />
-            <Box
-              sx={{
-                border: "1px solid #d8d8d8",
-                borderRadius: "5px",
-                padding: "5px",
-                alignItems: "left",
-                paddingLeft: "10px",
-                top: "-4px",
-                position: "relative",
-              }}
-            >
-              <Typography sx={{ fontSize: "12px", fontFamily: "Nunito Sans" }}>
-                $190
-              </Typography>
-            </Box>
+            <TextField
+        placeholder="$190"
+        size="small"
+        value={priceValue} // Controlled value for Price
+        onChange={handlePriceValueChange} // Handle Price input change
+        sx={{
+          marginTop: "0.5rem",
+          backgroundColor: "#fff",
+          borderRadius: "2px",
+          position: "relative",
+          top: "-14px",
+          "& .MuiOutlinedInput-root": {
+            padding: "0px", // Remove padding around the input
+            height: "30px", 
+            width: "130px", // Set the width you need
+            borderRadius: "3px", // Match your border radius
+          },
+          "& .MuiInputBase-input": {
+            padding: "2px 5px", // Reduce padding inside the input to control height
+            lineHeight: "1.5", // Reduce line-height
+            fontSize: "12px", // Adjust font size if needed
+          },
+        }}
+      />
+
             <Typography
               sx={{
                 fontSize: "8px",
@@ -588,21 +617,28 @@ const Primary = ({ bgColor, color, title, onClose }) => {
               Minimum
             </Typography>
             <SliderComponent color="green" value={75} />
-            <Box
-              sx={{
-                border: "1px solid #d8d8d8",
-                borderRadius: "5px",
-                padding: "5px",
-                alignItems: "left",
-                paddingLeft: "10px",
-                top: "-4px",
-                position: "relative",
-              }}
-            >
-              <Typography sx={{ fontSize: "12px", fontFamily: "Nunito Sans" }}>
-                $190
-              </Typography>
-            </Box>
+            <TextField
+  placeholder="$190"
+  size="small"
+  sx={{
+    marginTop: "0.5rem",
+    backgroundColor: "#fff",
+    borderRadius: "2px",
+    position: "relative",
+    top: "-14px",
+    "& .MuiOutlinedInput-root": {
+      padding: "0px", // Remove padding around the input
+      height: "30px",
+      width: "130px", // Set the height you need
+      borderRadius: "3px", // Match your border radius
+    },
+    "& .MuiInputBase-input": {
+      padding: "2px 5px", // Reduce padding inside the input to control height
+      lineHeight: "1.5", // Reduce line-height
+      fontSize: "12px", // Adjust font size if needed
+    },
+  }}
+/>
             <Typography
               sx={{
                 fontSize: "8px",
@@ -628,22 +664,28 @@ const Primary = ({ bgColor, color, title, onClose }) => {
               Step
             </Typography>
             <SliderComponent color="orange" value={40} />
-            <Box
-              sx={{
-                border: "1px solid #d8d8d8",
-                borderRadius: "5px",
-                padding: "5px",
-                alignItems: "left",
-                paddingLeft: "10px",
-                top: "-4px",
-                fontFamily: "Nunito Sans",
-                position: "relative",
-              }}
-            >
-              <Typography sx={{ fontSize: "12px", fontFamily: "Nunito Sans" }}>
-                $190
-              </Typography>
-            </Box>
+            <TextField
+  placeholder="$190"
+  size="small"
+  sx={{
+    marginTop: "0.5rem",
+    backgroundColor: "#fff",
+    borderRadius: "2px",
+    position: "relative",
+    top: "-14px",
+    "& .MuiOutlinedInput-root": {
+      padding: "0px", // Remove padding around the input
+      height: "30px",
+      width: "130px", // Set the height you need
+      borderRadius: "3px", // Match your border radius
+    },
+    "& .MuiInputBase-input": {
+      padding: "2px 5px", // Reduce padding inside the input to control height
+      lineHeight: "1.5", // Reduce line-height
+      fontSize: "12px", // Adjust font size if needed
+    },
+  }}
+/>
             <Typography
               sx={{
                 fontSize: "8px",
@@ -674,8 +716,8 @@ const Primary = ({ bgColor, color, title, onClose }) => {
           sx={{
             backgroundColor: "white",
             color: "black",
-            border: "1px solid black",
-            marginLeft: "20px",
+            border: "1px solid #d8d8d8",
+           
             textTransform: "none",
             fontFamily: "Nunito Sans",
           }}
@@ -687,7 +729,7 @@ const Primary = ({ bgColor, color, title, onClose }) => {
           sx={{
             backgroundColor: "rgb(80,120,225)",
             color: "white",
-            marginLeft: "20px",
+           
             textTransform: "none",
             fontFamily: "Nunito Sans",
           }}

@@ -1,6 +1,6 @@
-// src/store.js
+
 import { configureStore } from '@reduxjs/toolkit';
-import unitsReducer  from './PricingSlice'; // Import your slice or reducer
+import unitsReducer  from './PricingSlice';
 
   const store = configureStore({
   reducer: {

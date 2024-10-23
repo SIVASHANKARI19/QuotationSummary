@@ -8,6 +8,7 @@ import {
   DialogActions,
   Button,
   Tooltip,
+  Divider,
 } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ChevronRightOutlinedIcon from "@mui/icons-material/ChevronRightOutlined";
@@ -15,7 +16,8 @@ import React, { useState } from "react";
 import Primary from "./Primary/Primary";
 import CloseIcon from "@mui/icons-material/Close";
 
-const PricingComponent = () => {
+
+const PricingComponent = ({close}) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null);
 
@@ -73,6 +75,12 @@ const PricingComponent = () => {
     setDialogOpen(false);
     setCurrentItem(null);
   };
+  const closePopup = () => {
+    setDialogOpen(false); // Close the dialog
+    if (typeof close === 'function') {
+      close(); // Ensure the close function exists before calling it
+    }
+  }
 
   // Function to render the selected component with props
   const renderSelectedComponent = () => {
@@ -91,10 +99,14 @@ const PricingComponent = () => {
   };
 
   return (
-    <Box sx={{ width: "27vw" }}>
-      <Typography sx={{ fontSize: "16px", margin: "10px" }}>
+    <Box sx={{ width: "27vw" }} >
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <Typography sx={{ fontSize: "14px", margin: "12px", fontWeight: "bold",fontFamily: 'Nunito Sans' }}>
         Pricing Table
       </Typography>
+<IconButton>
+<CloseIcon   onClick={() => close()} /></IconButton></Box>
+      <Divider />
 
       {PricingTable.map((item) => (
         <Box
@@ -116,15 +128,18 @@ const PricingComponent = () => {
             <Typography
               sx={{
                 backgroundColor: item.arrowColor,
-                padding: "5px",
+                padding: "8px",
+                height: "25px",
+                width: "25px",
                 borderRadius: "50%",
-                fontSize: "12px",
+                fontSize: "8px",
                 fontFamily: "Nunito Sans",
+                color: "white",
               }}
             >
               {item.id}
             </Typography>
-            <Typography sx={{ marginLeft: "10px", fontSize: "12px" }}>
+            <Typography sx={{ marginLeft: "10px", fontSize: "12px" ,color:item.arrowColor}}>
               {item.title}
             </Typography>
           </Box>
@@ -151,7 +166,7 @@ const PricingComponent = () => {
                 },
               }}
             >
-              <InfoOutlinedIcon sx={{ color: "gray", fontSize: "16px" }} />
+              <InfoOutlinedIcon sx={{ color: "#CED3DD", fontSize: "16px" }} />
             </Tooltip>
 
             <IconButton>
@@ -168,16 +183,20 @@ const PricingComponent = () => {
         open={dialogOpen}
         onClose={handleCloseDialog}
         width="30vw"
-        height="20vh"
+
       >
         <DialogTitle
           sx={{
             display: "flex",
             justifyContent: "space-between",
             fontFamily: "Nunito Sans",
+            fontWeight: "bold",
+            fontSize: "10px",
           }}
         >
-          <Typography>{currentItem?.title}</Typography>
+          <Typography sx={{ paddingTop: "10px",alignItems: "center", fontFamily: "Nunito Sans",
+            fontWeight: "bold",
+            fontSize: "14px", }}>{currentItem?.title} Component</Typography>
           <IconButton
             onClick={handleCloseDialog}
             sx={{ position: "absolute", right: "10px" }}
@@ -185,7 +204,8 @@ const PricingComponent = () => {
             <CloseIcon />
           </IconButton>
         </DialogTitle>
-        <DialogContent>
+        <Divider />
+        <DialogContent sx={{ padding: "20px", height: "fit-content" }}>
           {renderSelectedComponent()}{" "}
           {/* Render the corresponding component with props */}
         </DialogContent>

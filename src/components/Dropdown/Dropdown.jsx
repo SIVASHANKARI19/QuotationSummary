@@ -34,7 +34,7 @@ const Dropdown = ({ options, anchorEl, setShowDropDown, onOptionSelect }) => {
         <MenuItem
           key={index}
           onClick={() => handleOptionClick(option)}
-          sx={{ borderBottom: "0.2px solid rgb(243,245,248)", fontSize: "10px", color: "#4E5A6B" ,fontFamily: 'Nunito Sans'}}
+          sx={{ borderBottom: "0.2px solid #E4E8EE", fontSize: "10px", color: "black" ,fontFamily: 'Nunito Sans'}}
         >
           {option}
         </MenuItem>

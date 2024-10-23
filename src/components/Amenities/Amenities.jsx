@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button, Checkbox,FormControlLabel,Radio, RadioGroup } from "@mui/material";
-import amenityImage from "../../assets/amenities.png";
+import { Box, Typography, Button, Checkbox,FormControlLabel,Radio, RadioGroup, Divider, IconButton } from "@mui/material";
+import amenityImage from "../../assets/interior.jpg";
 import ExampleStrapiSwitch from "../Toggle";
 import { useDispatch, useSelector } from "react-redux";
+import { CloseOutlined } from "@mui/icons-material";
+import Amentity from '../../assets/amenities.png'
 import {
   addSelectedAmenity,
   removeSelectedAmenity,
@@ -30,6 +32,41 @@ const amenitiesData = [
   },
   {
     id: 3,
+    name: "fireplace",
+    price: "$20.00",
+    validity: "Valid Feb-12 - Feb-27 23",
+    image: amenityImage,
+    checked: false,
+    additionalChecked: false,
+  },
+  {
+    id: 4,
+    name: "Gym",
+    price: "$25.00",
+    validity: "Valid Mar-01 - Mar-15 23",
+    image: amenityImage,
+    checked: false,
+    additionalChecked: false,
+  },
+  {
+    id: 5,
+    name: "fireplace",
+    price: "$20.00",
+    validity: "Valid Feb-12 - Feb-27 23",
+    image: amenityImage,
+    checked: false,
+    additionalChecked: false,
+  }, {
+    id: 6,
+    name: "Gym",
+    price: "$25.00",
+    validity: "Valid Mar-01 - Mar-15 23",
+    image: amenityImage,
+    checked: false,
+    additionalChecked: false,
+  },
+  {
+    id: 7,
     name: "fireplace",
     price: "$20.00",
     validity: "Valid Feb-12 - Feb-27 23",
@@ -86,16 +123,25 @@ const Amenities = ({ close }) => {
 
   return (
     <Box sx={{ overflow: "hidden", width: "25vw" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       <Typography
         variant="h6"
         padding={1}
-        marginTop={2}
+    
         fontSize={14}
         fontWeight={"bold"}
         fontFamily={"Nunito Sans"}
       >
      Add   Amenities
       </Typography>
+      <IconButton>
+      <CloseOutlined
+  onClick={() => close()}  // Call the close function when 'X' is clicked
+  sx={{ cursor: "pointer", position: "relative", fontSize: "18px" }}
+/></IconButton>
+
+        </Box>
+      <Divider sx={{ mb: "10px" }} />
       <Box
         sx={{
           display: "flex",
@@ -118,7 +164,7 @@ const Amenities = ({ close }) => {
         >
           <Box
             component="img"
-            src={amenityImage}
+            src={Amentity}
             alt="Lead Profile"
             sx={{ height: 40, width: 40 }}
           />
@@ -149,6 +195,7 @@ const Amenities = ({ close }) => {
         <Typography color="gray" marginRight={"270px"} fontSize={12}>
           Available Amenities
         </Typography>
+        <Box sx={{overflow:"scroll",height:"300px",width:"25vw",scrollbarWidth:"none",gap:"10px"}}>
         {amenities.map((amenity) => (
           <Box key={amenity.id}>
             <Box
@@ -158,10 +205,13 @@ const Amenities = ({ close }) => {
                 paddingRight: "10px",
                 border: "1px solid #d8d8d8",
                 borderRadius: "5px",
+                marginBottom: "10px",
                 width: "25vw",
                 flexWrap: "wrap",
                 overflow: "hidden",
-                transition: "0.3s ease",
+                transition: amenity.checked
+                  ? "all 2s ease-in-out"
+                  : "all 2s ease-in-out",
                 borderBottomLeftRadius: "0px",
                 borderBottomRightRadius: "0px",
               }}
@@ -187,12 +237,13 @@ const Amenities = ({ close }) => {
                   sx={{
                     fontSize: { xs: "12px", md: "12px" },
                     fontWeight: "bold",
+                    fontFamily: 'Nunito Sans',
                   }}
                 >
                   {amenity.name}
                 </Typography>
                 <Typography
-                  sx={{ fontSize: { xs: "14px", md: "12px" }, color: "gray" }}
+                  sx={{ fontSize: { xs: "14px", md: "12px" }, color: "gray",fontFamily: 'Nunito Sans' }}
                 >
                   {amenity.price} • {amenity.validity}
                 </Typography>
@@ -210,7 +261,9 @@ const Amenities = ({ close }) => {
     sx={{
       borderTop: "none",
       width: "25vw",
-      height: "4vh",
+      height: "1vh",
+      marginBottom: "30px",
+      transition: "0.3s ease",
       textAlign: "center",
       backgroundColor: "white",
       display: "flex",
@@ -244,9 +297,11 @@ const Amenities = ({ close }) => {
         borderTopLeftRadius: "0px",
         borderTopRightRadius: "0px",
         fontSize: "0.2rem",
+        
         "& .MuiFormControlLabel-label": {
           color: "black",
-          fontSize: "0.6rem", // Set your preferred font size
+          fontSize: "0.6rem",
+          fontFamily: "Nunito Sans", // Set your preferred font size
         },
       }}
     />
@@ -255,17 +310,18 @@ const Amenities = ({ close }) => {
 
           </Box>
         ))}
-
+</Box>
         <Button
           variant="contained"
           sx={{
             width: "100%",
-            height: "50px",
+            height: "35px",
             backgroundColor: "rgb(80,120,225)",
             padding: "20px",
             textTransform: "none",
             marginTop: "20px",
-            marginBottom: "20px",
+           fontFamily: "Nunito Sans",
+            fontSize: "14px",
           }}
           onClick={() => close()}
         >

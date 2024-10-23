@@ -79,8 +79,8 @@ const Discount = () => {
         </Box>
       </Box>
       <CardContent >
-        <Box display="flex" alignItems="center"  mt={-2} >
-          <Typography gutterBottom fontSize={{ xs: '10px', md: '12px' }} color="black" fontWeight="bold">
+        <Box display="flex" alignItems="center"  mt={-2} ml={0.5}>
+          <Typography gutterBottom fontSize={{ xs: '10px', md: '12px' }} fontFamily="Nunito Sans" color="black" fontWeight="bold">
             Jumeirah Estate
           </Typography>
           <Button
@@ -93,19 +93,20 @@ const Discount = () => {
                 fontSize: { xs: '10px', md: '7px' }, // Responsive font size
                 minWidth: 'unset',
                 fontWeight: 'bold',
-                ml: 1, // Prevents button from being too wide
+                ml: 1, 
+                fontFamily: 'Nunito Sans',// Prevents button from being too wide
               }}
             >
               UNIT-1234
             </Button>
         </Box>
-        <Typography fontSize={{ xs: '10px', md: '10px' }} padding={0.5}  color="text.secondary">
+        <Typography fontSize={{ xs: '10px', md: '10px' }} padding={0.5}  color="text.secondary" fontFamily={"Nunito Sans"}>
           Rubix Apartment, K Tower, Floor 1
         </Typography>
-        <Typography fontSize={{ xs: '10px', md: '10px' }}padding={0.5}  color="text.secondary">
+        <Typography fontSize={{ xs: '10px', md: '10px' }}padding={0.5}  color="text.secondary" fontFamily={"Nunito Sans"}>
           2 BHK • 2000 Sq Ft
         </Typography>
-        <Typography variant="body2" sx={{ color: 'rgb(194,199,205)', fontSize: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between',width: '85%' }}>
+        <Typography variant="body2" sx={{ color: '#4E5A6B', fontSize: 12, display: 'flex', alignItems: 'center',fontFamily: 'Nunito Sans', justifyContent: 'space-between',width: '85%' ,ml: 0.5}}>
                 <HotelIcon fontSize="small" sx={{ mr: 0.5 }} /> 2
                 <Typography sx={{ mr: 1 }}>•</Typography>
                 <LuBath  fontSize="medium" sx={{ mr: 0.5 }} /> 2
@@ -118,6 +119,7 @@ const Discount = () => {
       <Divider sx={{ marginTop: -1,width:'90%',alignItems:'center' }}/>
       <Box
         mt={-1}
+        ml={0.5}
         display="flex"
         alignItems="center"
         justifyContent="space-between"

@@ -7,9 +7,9 @@ import {
   ListItemText,
   Typography,
   Button,
-  Dialog,
   DialogContent,
   DialogTitle,
+  IconButton,
 } from "@mui/material";
 import PropertyDetails from "./../Discount/Discount";
 import { CloseOutlined } from "@mui/icons-material";
@@ -18,17 +18,24 @@ import { MenuItem, Select, InputBase } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { styled } from "@mui/material/styles";
-const AddDiscount = () => {
+import { useDispatch } from 'react-redux'; // Import useDispatch
+import { addDiscount } from '../../redux/PricingSlice'; // Import the action
+
+const AddDiscount = ({ close }) => {
   const [open, setOpen] = useState(true);
-  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValues, setSelectedValues] = useState(Array(5).fill("")); // Array to store selected values for each item
+  const [discountValues, setDiscountValues] = useState(Array(5).fill("")); // State to store discount input values
+  const dispatch = useDispatch(); // Initialize useDispatch
 
   const handleClose = () => {
     setOpen(false);
+    close();
   };
 
   const handleOpen = () => {
     setOpen(true);
   };
+
   const CustomInput = styled(InputBase)(() => ({
     "& .MuiInputBase-input": {
       fontSize: "0.5rem",
@@ -39,8 +46,18 @@ const AddDiscount = () => {
     },
   }));
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+  const handleChange = (event, index) => {
+    const newSelectedValues = [...selectedValues];
+    newSelectedValues[index] = event.target.value;
+    setSelectedValues(newSelectedValues);
+
+    // Update discount values state
+    const newDiscountValues = [...discountValues];
+    newDiscountValues[index] = event.target.value; // Assuming event.target.value is the discount value
+    setDiscountValues(newDiscountValues);
+
+    // Dispatch the addDiscount action
+    dispatch(addDiscount(event.target.value)); // Dispatch the discount value to the Redux store
   };
 
   return (
@@ -54,22 +71,26 @@ const AddDiscount = () => {
       >
         <DialogTitle
           sx={{
-            fontSize: "0.8rem",
+            fontSize: "0.9rem",
             color: "black",
             fontFamily: "Nunito Sans",
             fontWeight: "600",
+            position: "relative",
+            top: "-10px",
           }}
         >
-          Add Discount to unit
+          Add Discount to Unit
         </DialogTitle>
-        <CloseOutlined onClick={handleClose} />
+        <IconButton> <CloseOutlined
+          onClick={handleClose}
+          sx={{ cursor: "pointer", position: "relative", top: "-10px" }}
+        /></IconButton>
+       
       </Box>
       <Divider sx={{ mt: -2, mb: -1 }} />
       <DialogContent
         sx={{
           overflowY: "auto",
-          scrollbarWidth: "none",
-          msScrollbarWidth: "none",
           fontFamily: "Nunito Sans",
         }}
       >
@@ -83,10 +104,16 @@ const AddDiscount = () => {
               pt: "1rem",
             }}
           >
-            <Typography variant="h6" gutterBottom sx={{ fontSize: "0.8rem" }}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ fontSize: "0.8rem", fontWeight: "bold", fontFamily: "Nunito Sans" }}
+            >
               UNIT PRICE DETAIL
             </Typography>
-            <List style={{ mb: 19, fontSize: "8px" }}>
+            <List sx={{ fontSize: "10px",
+                    fontFamily: "Nunito Sans",
+                    fontWeight: "bold", }}>
               {[
                 "Bill Name Here",
                 "Bill Name Here",
@@ -97,18 +124,22 @@ const AddDiscount = () => {
                 <ListItem
                   key={index}
                   divider
-                  style={{
+                  sx={{
                     padding: "4px 16px",
-                    fontSize: "8px",
+                    fontSize: "10px",
+                    fontFamily: "Nunito Sans",
+                    fontWeight: "bold",
                     display: "block",
                   }}
                 >
-                  <div
-                    style={{ display: "flex", justifyContent: "space-between" }}
+                  <Box
+                    sx={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <ListItemText
                       primary={
-                        <Typography style={{ fontSize: "10px" }}>
+                        <Typography sx={{fontSize: "12px",
+                          fontFamily: "Nunito Sans",
+                          fontWeight: "bold", }}>
                           {item}
                         </Typography>
                       }
@@ -116,24 +147,29 @@ const AddDiscount = () => {
                     <ListItemText
                       primary={
                         <Typography
-                          style={{ fontSize: "10px", textAlign: "right" }}
+                          sx={{
+                            fontSize: "10px",
+                            textAlign: "right",
+                            fontFamily: "Nunito Sans",
+                            fontWeight: "bold",
+                          }}
                         >
                           $10,000
                         </Typography>
                       }
                     />
-                  </div>
+                  </Box>
 
-                  <div
-                    style={{
+                  <Box
+                    sx={{
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      marginTop: "4px",
+                      mt: "4px",
                     }}
                   >
                     <Typography
-                      style={{
+                      sx={{
                         fontSize: "12px",
                         fontFamily: "Nunito Sans",
                         color: "grey",
@@ -141,24 +177,31 @@ const AddDiscount = () => {
                     >
                       Discount
                     </Typography>
-                    <div style={{ display: "flex", gap: "8px" }}>
-                      <button
+                    <Box sx={{ display: "flex" }}>
+                      <input
+                        type="text"
                         style={{
                           fontSize: "10px",
+                          width: "4rem",
                           fontFamily: "Nunito Sans",
                           color: "grey",
                           backgroundColor: "white",
                           border: "1px solid lightgrey",
-                          borderRadius: "5px",
+                          borderRadius: "2px",
                           padding: "2px 8px",
                         }}
-                      >
-                        100,000
-                      </button>
+                        onChange={(e) => {
+                          const newDiscountValues = [...discountValues];
+                          newDiscountValues[index] = e.target.value; // Update discount value
+                          setDiscountValues(newDiscountValues);
+                          dispatch(addDiscount(e.target.value)); // Dispatch the updated value
+                        }}
+                      />
+
                       <Select
                         labelId="custom-select-label"
-                        value={selectedValue}
-                        onChange={handleChange}
+                        value={selectedValues[index]}
+                        onChange={(event) => handleChange(event, index)}
                         displayEmpty
                         IconComponent={null}
                         input={<CustomInput />}
@@ -168,15 +211,19 @@ const AddDiscount = () => {
                           </span>
                         )}
                         sx={{
-                          height: "1.5rem", // Adjusted height
-                          width: "5 rem",
-                          // Removed padding
-                          fontSize: "1rem", // Adjusted font size
-                          // Custom padding for selected value
-                          // Minimum height adjustment
+                          height: "1.5rem",
+                          width: "5rem",
+                          border: "1px solid lightgrey",
+                          fontSize: "1rem",
+                          boxSizing: "border-box",
+                          "&:hover": {
+                            borderColor: "gray",
+                          },
+                          "& .MuiSelect-select": {
+                            padding: "0 8px",
+                          },
                         }}
                         onOpen={handleOpen}
-                        onClose={handleClose}
                         endAdornment={
                           open ? (
                             <KeyboardArrowUpIcon
@@ -211,8 +258,8 @@ const AddDiscount = () => {
                           $100,000
                         </MenuItem>
                       </Select>
-                    </div>
-                  </div>
+                    </Box>
+                  </Box>
                 </ListItem>
               ))}
             </List>
@@ -220,9 +267,8 @@ const AddDiscount = () => {
             <Grid
               container
               justifyContent="space-between"
-              style={{
-                padding: "5px 10px",
-                marginLeft: "0rem",
+              sx={{
+                padding: "10px 10px",
                 backgroundColor: "#E4E8EE",
                 paddingLeft: "2rem",
                 borderRadius: "5px",
@@ -230,16 +276,21 @@ const AddDiscount = () => {
                 mt: "5rem",
               }}
             >
-              <Typography variant="body1">Final Total</Typography>
-              <Typography variant="h6" sx={{ mr: "0.3rem" }}>
+              <Typography variant="body1" sx={{ mr: "0.3rem",fontSize:"0.8rem",fontWeight:"bold" }}>Final Total</Typography>
+              <Typography  sx={{ mr: "0.3rem",fontSize:"0.8rem",fontWeight:"bold" }}>
                 $1,200
               </Typography>
             </Grid>
 
-            <Divider style={{ margin: "10px 0" }} />
-
-            <Button variant="contained" color="primary" sx={{ width: "100%" }}>
-              Update & Save
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ mt: "1rem",width:"100%" ,textTransform:"capitalize" }}
+              onClick={() => {
+                console.log(discountValues); // Log the discount values on button click
+              }}
+            >
+              Save Discount
             </Button>
           </Box>
         </Box>

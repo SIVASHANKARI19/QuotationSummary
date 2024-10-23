@@ -156,18 +156,20 @@ const MainContent = () => {
   return (
     <Box
       sx={{
-        height: "79vh",
-        width: "90vw",
-        boxShadow: "0.5px 2px 5px rgba(0, 0, 0, 0.25)",
-        borderRadius: "5px",
+        
+        width: "93vw",
+        alignItems: "center",
+         boxShadow: "1px 5px 5px rgba(0, 0, 0, 0.25)",
+        borderRadius: "20px",
       }}
     >
       <div
         style={{
           backgroundColor: "white",
-          borderTopLeftRadius: "5px",
-          borderTopRightRadius: "5px",
+          borderTopLeftRadius: "12px",
+          borderTopRightRadius: "12px",
           padding: "10px",
+          paddingLeft: "20px",
           borderBottom: "1px solid #e1e1e1",
         }}
       >
@@ -191,7 +193,7 @@ const MainContent = () => {
           display: "flex",
           paddingTop: "0",
           height: "65vh",
-          width: "89.9vw",
+          width: "93vw",
         }}
       >
         <Grid2
@@ -210,8 +212,10 @@ const MainContent = () => {
               color: "#4E5A6B",
               fontSize: "14px",
               position: "relative",
-              top: "-16px",
+              top: "-15px",
               fontWeight: "bold",
+            
+              
             }}
           >
             Lead Details{" "}
@@ -268,7 +272,7 @@ const MainContent = () => {
           }}
         >
           <Typography
-            padding={1}
+            padding={2}
             backgroundColor="white"
             sx={{
               color: "#4E5A6B",
@@ -276,7 +280,10 @@ const MainContent = () => {
               width: "88.5%",
               fontWeight: "bold",
               position: "relative",
-              left: "-15px",
+              paddingTop: "10px",
+              paddingLeft: "0px",
+              
+              
             }}
           >
             Quotation Details
@@ -290,9 +297,11 @@ const MainContent = () => {
             display: "flex",
             justifyContent: "space-between",
             backgroundColor: "white",
-            width: "88.66vw",
+            width: "93vw",
             paddingBottom: "2px",
-            paddingTop: 1,
+            padding: 2,
+            borderBottomLeftRadius: "12px",
+            borderBottomRightRadius: "12px",
           }}
         >
           <Box>
@@ -302,7 +311,7 @@ const MainContent = () => {
                 color: "black",
                 border: "1px solid #d8d8d8",
                 textTransform: "none",
-                marginLeft: "20px",
+              
                 fontWeight: "bold",
                 fontFamily: "Nunito Sans",
               }}
@@ -345,3 +354,4 @@ const MainContent = () => {
 };
 
 export default MainContent;
+

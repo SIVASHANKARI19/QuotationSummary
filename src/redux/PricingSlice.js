@@ -7,7 +7,8 @@ const initialState = {
   totalAmt: 0, 
   selectedAmenities: [],
   totalAmenities: 0 ,
-  totalAmenitiesPrice: 0
+  totalAmenitiesPrice: 0,
+  discounts: [],
 };
 
 const unitsSlice = createSlice({
@@ -80,7 +81,16 @@ const unitsSlice = createSlice({
         const price = parseFloat(item.price.replace(/[$,]/g, ''));
         return total + price;
       }, 0);
-    }
+    },
+    setDiscounts(state, action) {
+      state.discounts = action.payload; // Update discounts with the new values
+    },
+    addDiscount(state, action) {
+      state.discounts.push(action.payload); // Add a single discount to the array
+    },
+    clearDiscounts(state) {
+      state.discounts = []; // Clear the discounts
+    },
   }
 });
 
@@ -93,7 +103,7 @@ export const {
   addSelectedAmenity,
   removeSelectedAmenity,
   totalAmenities,
-  totalAmenitiesPrice
+  totalAmenitiesPrice,setDiscounts, addDiscount, clearDiscounts
 } = unitsSlice.actions;
 
 export default unitsSlice.reducer;

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Box, Typography, Button, Checkbox } from "@mui/material";
+import { Box, Typography, Button, Checkbox,IconButton, Divider } from "@mui/material";
 import amenity from "../../assets/utilities.png";
 import ExampleStrapiSwitch from "../Toggle";
+import { CloseOutlined } from "@mui/icons-material";
 
 const amenitiesData = [
   {
@@ -24,6 +25,42 @@ const amenitiesData = [
   },
   {
     id: 3,
+    name: "Tom Cruise",
+    price: "$20.00",
+    validity: "Valid Feb-12 - Feb-27 23",
+    image: amenity,
+    checked: false,
+    additionalChecked: false,
+  },
+  {
+    id: 4,
+    name: "Jane Doe",
+    price: "$25.00",
+    validity: "Valid Mar-01 - Mar-15 23",
+    image: amenity,
+    checked: false,
+    additionalChecked: false,
+  },
+  {
+    id: 5,
+    name: "Tom Cruise",
+    price: "$20.00",
+    validity: "Valid Feb-12 - Feb-27 23",
+    image: amenity,
+    checked: false,
+    additionalChecked: false,
+  },
+  {
+    id: 6,
+    name: "Jane Doe",
+    price: "$25.00",
+    validity: "Valid Mar-01 - Mar-15 23",
+    image: amenity,
+    checked: false,
+    additionalChecked: false,
+  },
+  {
+    id: 7,
     name: "Tom Cruise",
     price: "$20.00",
     validity: "Valid Feb-12 - Feb-27 23",
@@ -64,10 +101,11 @@ const Utilities = ({ close }) => {
 
   return (
     <Box sx={{ overflow: "hidden", width: "25vw" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between",alignItems:"center" }}>
       <Typography
         variant="h6"
         padding={1}
-        marginTop={2}
+    
         fontSize={14}
         color="black"
         fontWeight="bold"
@@ -75,6 +113,12 @@ const Utilities = ({ close }) => {
       >
         Add Utilities
       </Typography>
+      <IconButton  onClick={() => close()}>
+      <CloseOutlined
+  // Call the close function when 'X' is clicked
+  sx={{ cursor: "pointer", position: "relative", fontSize: "18px" ,top:"3px" }}
+/></IconButton></Box>
+<Divider sx={{mb:"10px"}}/>
       <Box
         sx={{
           display: "flex",
@@ -128,7 +172,7 @@ const Utilities = ({ close }) => {
         <Typography color="gray" marginRight={"270px"} fontSize={12}>
           Available Utilities
         </Typography>
-
+<Box sx={{overflow:"scroll",height:"300px",width:"25vw",scrollbarWidth:"none",gap:"10px"}}>
         {amenities.map((amenity) => (
           <Box key={amenity.id}>
             <Box
@@ -137,6 +181,7 @@ const Utilities = ({ close }) => {
                 alignItems: "center",
                 paddingRight: "10px",
                 border: "1px solid #d8d8d8",
+                marginBottom: "10px",
                 borderRadius: "5px",
                 width: "25vw",
                 flexWrap: "wrap",
@@ -225,17 +270,18 @@ const Utilities = ({ close }) => {
             )}
           </Box>
         ))}
-
+</Box>
         <Button
           variant="contained"
           sx={{
             width: "100%",
-            height: "50px",
+            height: "30px",
             backgroundColor: "rgb(80,120,225)",
             padding: "20px",
             textTransform: "none",
             marginTop: "20px",
-            marginBottom: "20px",
+            
+            fontSize: "14px",
           }}
           onClick={() => close()}
         >
